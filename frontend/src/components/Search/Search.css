@@ -1,0 +1,19 @@
+.search-container {
+    width: 100%;
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.search-input {
+    width: 66%;
+    height: 32px;
+    border: none;
+    padding: 2px;
+}
+
+.search-select {
+    width: 24%;
+    border: none;
+}

@@ -1,0 +1,16 @@
+header {
+    grid-area: header;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(80, 38, 120);
+}
+
+header h1 {
+    display: inline-block;
+    width: auto;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}

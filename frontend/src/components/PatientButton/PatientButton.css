@@ -1,0 +1,68 @@
+.patient-list-item {
+    width: 100%;
+    background-color: #fff;
+    height: 3.8rem;
+    margin-bottom: 2px;
+    padding-right: .9rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-list-item:first-child {
+    margin-top: 2px;
+}
+
+.patient-list-item img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.list-item-img {
+    height: 100%;
+    width: 3.8rem;
+    padding-left: .2rem;
+    display: grid;
+    place-items: center;
+}
+
+.list-item-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.patient-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.owner-name {
+    font-size: .9rem;
+}
+
+.list-item-btn {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 .5rem;
+    border: none;
+    opacity: 80%;
+    border-radius: 40%;
+}
+
+.list-item-btn img {
+    width: 1rem;
+}
+
+.btn-primary {
+    background-color: rgba(75, 21, 126, 0.810);
+}
+
+.btn-primary:hover {
+    background-color: rgba(75, 21, 126, 0.921);
+}

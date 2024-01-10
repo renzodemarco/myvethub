@@ -1,0 +1,10 @@
+main {
+    grid-area: main;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100%;
+    background-color: rgb(218, 212, 224);
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100%;
+}

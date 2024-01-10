@@ -1,0 +1,25 @@
+.add-patient-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-patient-container button {
+    margin: 1rem;
+    margin-top: 1.2rem;
+    height: 46px;
+    width: 260px;
+    padding: 6px;
+    border: none;
+    background-color:rgba(75, 21, 126, 0.810);
+    font-size: 17px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-patient-container button:hover {
+    background-color: rgba(75, 21, 126, 0.921);
+    cursor: pointer;
+}

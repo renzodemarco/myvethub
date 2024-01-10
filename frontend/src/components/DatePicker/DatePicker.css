@@ -1,0 +1,25 @@
+.date-picker-container {
+    margin: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 18rem;
+}
+
+.date-picker {
+    width: 10rem;
+}
+
+.current-age {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end
+}
+
+.current-age p {
+    margin-left: 1rem;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+}

@@ -1,0 +1,101 @@
+[{
+    "nombre":"Bigotes", 
+    "propietario":"Rodriguez Veronica",
+    "especie":"Felino",
+    "sexo":"Macho",
+    "edad":"1 año",
+    "raza":"Mestizo",
+    "peso":"2.4",
+    "historia":"No puede orinar hace dos días.",
+    "id":69470
+},{
+    "nombre":"Mora",
+    "propietario":"Liberotti Giselle",
+    "especie":"Canino",
+    "sexo":"Hembra",
+    "edad":"5 meses",
+    "raza":"Caniche",
+    "peso":"1.6",
+    "historia":"Decaimiento, vómitos y diarrea de un día de evolución.",
+    "id":79643
+},{
+    "nombre":"Lola",
+    "propietario":"Candia Daniel",
+    "especie":"Canino",
+    "sexo":"Hembra",
+    "edad":"13 años",
+    "raza":"Labrador",
+    "peso":"24",
+    "historia":"Decaimiento y anorexia de dos días de evolución. Probable enfermedad renal crónica.",
+    "id":63255
+},{
+    "nombre":"Rómulo",
+    "propietario":"Olivera Horacio",
+    "especie":"Canino",
+    "sexo":"Macho",
+    "edad":"12 años",
+    "raza":"Mestizo",
+    "peso":"19",
+    "historia":"Paciente en observación tras cirugía para extracción de cuerpo extraño en estómago.",
+    "id":13425
+},{
+    "nombre":"Samantha",
+    "propietario":"Cárdenas Juana",
+    "especie":"Felino",
+    "sexo":"Hembra",
+    "edad":"4 años",
+    "raza":"Mestizo",
+    "peso":"3.6",
+    "historia":"Presentó cuatro convulsiones en las últimas 12 horas.",
+    "id":98122
+},{
+    "nombre":"Mateo",
+    "propietario":"Lopez Agustina",
+    "especie":"Canino",
+    "sexo":"Macho",
+    "edad":"9 años",
+    "raza":"Mestizo",
+    "peso":"8.2",
+    "historia":"Presenta discoespondilosis en vértebras L3-L4-L5.",
+    "id":81615
+},{
+    "nombre":"Tyson",
+    "propietario":"Portillo Kevin",
+    "especie":"Canino",
+    "sexo":"Macho",
+    "edad":"2 años",
+    "raza":"Pitbull",
+    "peso":"25",
+    "historia":"Presenta múltiples heridas de mordedura en región ventral de cuello y tórax tras pelearse con otro perro.",
+    "id":28903
+},{
+    "nombre":"China",
+    "propietario":"Posadas Violeta",
+    "especie":"Canino",
+    "sexo":"Hembra",
+    "edad":"5 años",
+    "raza":"Sharpei",
+    "peso":"19",
+    "historia":"Tuvo una reacción alérgica por posible picadura de araña, presenta angioedema y urticaria.",
+    "id":61130
+},{
+    "nombre":"Dibu",
+    "propietario":"Espósito Julián",
+    "especie":"Felino",
+    "sexo":"Macho",
+    "edad":"5 meses",
+    "raza":"Siamés",
+    "peso":"2.2",
+    "historia":"Se peleó con otro gato, ingresa con hemorragia activa de miembro anterior derecho.",
+    "id": 27891
+},{
+    "nombre":"Micho",
+    "propietario":"Suarez Agustín",
+    "especie":"Felino",
+    "sexo":"Macho",
+    "edad":"4 años",
+    "raza":"Mestizo",
+    "peso":"4.2",
+    "historia":"Decaimiento y vómitos de 4 días de evolución.",
+    "id":71205
+}]
