@@ -10,7 +10,7 @@ const PatientsListContainer = () => {
         const fetchData = async () => {
             try {
                 const data = await getPatients();
-                setPatients(data);
+                setPatients(data.payload);
             } catch (error) {
                 console.error(error);
             }

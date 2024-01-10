@@ -10,3 +10,21 @@ export const getPatients = async () => {
         throw error
     }
 }
+
+export const postPatient = async (data) => {
+    try {
+        return await manager.create(data)
+    }
+    catch(error) {
+        throw error
+    }
+}
+
+export const deletePatient = async (id) => {
+    try {
+        return await manager.destroy(id)
+    }
+    catch(error) {
+        throw error
+    }
+}

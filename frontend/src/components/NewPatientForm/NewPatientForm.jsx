@@ -1,13 +1,13 @@
 import DatePicker from '../DatePicker/DatePicker'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import normalizeData from '../../utils/normalizeData.js'
 import postPatient from '../../services/postPatient.js'
 import './NewPatientForm.css'
 
 const NewPatientForm = () => {
-    function PatientForm() {
-        const [formData, setFormData] = useState({});
-    }
+    const [formData, setFormData] = useState({});
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,30 +19,46 @@ const NewPatientForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const normalizedData = normalizeData(formData)
 
         try {
-            const createdPatient = await postPatient(formData);
-            console.log('Paciente creado exitosamente:', createdPatient);
-            history.push('/');
+            const data = await postPatient(normalizedData);
+            alert('Paciente creado exitosamente:', data.payload);
+            navigate('/')
+            
         } catch (error) {
             console.error(error.message);
         }
     };
 
     return (
-        <>
-            <form className="new-patient-form">
+        <form className='new-patient-form' onSubmit={handleSubmit}>
+            <div className="new-patient-form-container">
                 <div className="mb-3">
                     <label className="form-label">Nombre del paciente</label>
-                    <input type="text" className="form-control" maxLength="40" id="name" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    maxLength="40" 
+                    name="name" 
+                    autoComplete="off"
+                    onChange={handleChange}
+                    />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Propietario</label>
-                    <input type="text" className="form-control" maxLength="50" id="owner" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    maxLength="50" 
+                    name="owner" 
+                    autoComplete="off"
+                    onChange={handleChange}
+                    />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Especie</label>
-                    <select className="form-select" id="species">
+                    <select className="form-select" name="species" onChange={handleChange}>
                         <option></option>
                         <option>Canino</option>
                         <option>Felino</option>
@@ -50,7 +66,7 @@ const NewPatientForm = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Sexo</label>
-                    <select className="form-select" id="sex">
+                    <select className="form-select" name="sex" onChange={handleChange}>
                         <option></option>
                         <option>Macho</option>
                         <option>Hembra</option>
@@ -58,17 +74,23 @@ const NewPatientForm = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Raza</label>
-                    <input type="text" className="form-control" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    name="breed" 
+                    autoComplete="off"
+                    onChange={handleChange}
+                    />
                 </div>
                 <DatePicker />
-            </form>
+            </div>
             <div className="new-patient-btn-container">
                 <Link to='/'>
                     <button className="btn btn-danger">CANCELAR</button>
                 </Link>
-                <button type="submit" className="btn btn-primary" onSubmit={handleSubmit}>AGREGAR</button>
+                <button type="submit" className="btn btn-primary">AGREGAR</button>
             </div>
-        </>
+        </form>
     )
 }
 
