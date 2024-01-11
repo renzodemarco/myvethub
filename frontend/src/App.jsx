@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import NewPatientContainer from './components/NewPatientContainer/NewPatientContainer'
+import Home from './views/Home'
+import Edit from './views/Edit'
+import Create from './views/Create'
 
 
 function App() {
@@ -9,9 +10,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header/>
-      <Main/>
       <Routes>
-        <Route path={'/create'} element={<NewPatientContainer/>}/>
+        <Route path="/" element={<Home/>} />
+        <Route path="/create" element={<Create/>}/>
+        <Route path="/edit/:id" element={<Edit/>}/>
       </Routes>
     </BrowserRouter>
   )

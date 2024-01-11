@@ -3,8 +3,8 @@ import PatientModel from "../models/patients.model.js";
 export default class PatientDAO {
     constructor() { }
     
-    async create(patient) {
-        return await PatientModel.create(patient)
+    async create(data) {
+        return await PatientModel.create(data)
     }
 
     async read() {
@@ -15,8 +15,8 @@ export default class PatientDAO {
         return await PatientModel.findById(id)
     }
 
-    async update(patient, id) {
-        return await PatientModel.findByIdAndUpdate(id, patient, {new: true})
+    async update(id, data) {
+        return await PatientModel.findByIdAndUpdate(id, data, {new: true})
     }
 
     async destroy(id) {

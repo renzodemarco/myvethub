@@ -1,7 +1,7 @@
-const postPatient = async (formData) => {
+const putPatient = async (id, formData) => {
     try {
-        const response = await fetch('http://localhost:8080/api/patients', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:8080/api/patients/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -12,11 +12,11 @@ const postPatient = async (formData) => {
             const data = await response.json();
             return data;
         } else {
-            throw new Error('Error al crear el paciente');
+            throw new Error('Error al actualizar el paciente');
         }
     } catch (error) {
         throw error;
     }
 };
 
-export default postPatient;
+export default putPatient

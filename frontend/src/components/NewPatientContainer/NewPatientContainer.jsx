@@ -1,4 +1,4 @@
-import NewPatientForm from '../NewPatientForm/NewPatientForm'
+import PatientForm from '../PatientForm/PatientForm'
 import { useState, useEffect } from 'react'
 import './NewPatientContainer.css'
 
@@ -9,7 +9,7 @@ const NewPatientContainer = () => {
     useEffect(() => {
         setTimeout(() => {
             setShowContainer(true);
-        }, 50);
+        }, 10);
     }, []);
 
     return (
@@ -18,7 +18,7 @@ const NewPatientContainer = () => {
                 <div className="new-patient-title">
                     <h2>Agregando nuevo paciente</h2>
                 </div>
-                <NewPatientForm />
+                <PatientForm />
             </div>
         </div>
     )

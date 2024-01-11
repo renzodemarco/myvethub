@@ -11,6 +11,7 @@ const PatientsList = ({patients}) => {
                     species = {data.species}
                     name = {data.name}
                     owner = {data.owner}
+                    id = {data._id}
                     key = {data._id}
                     />
                 )

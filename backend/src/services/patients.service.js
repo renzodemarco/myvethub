@@ -11,9 +11,27 @@ export const getPatients = async () => {
     }
 }
 
+export const getPatientById = async (id) => {
+    try {
+        return await manager.readById(id)
+    }
+    catch(error) {
+        throw error
+    }
+}
+
 export const postPatient = async (data) => {
     try {
         return await manager.create(data)
+    }
+    catch(error) {
+        throw error
+    }
+}
+
+export const putPatient = async (id, data) => {
+    try {
+        return await manager.update(id, data)
     }
     catch(error) {
         throw error
