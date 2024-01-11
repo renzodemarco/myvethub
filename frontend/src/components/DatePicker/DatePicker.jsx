@@ -11,7 +11,12 @@ const DatePicker = ({initialValue, onChange}) => {
     const [difference, setDifference] = useState('');
 
     useEffect(() => {
-        setStartDate(initialValue);
+        if (initialValue) {
+            setStartDate(initialValue);
+            const result = getCurrentAge(new Date(initialValue))
+            setDifference(result);
+        }
+
     }, [initialValue]);
     
     const handleDateBlur = (event) => {

@@ -1,12 +1,17 @@
 import './AddPatientBtn.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const AddPatient = () => {
+
+    const navigate = useNavigate()
+    
+    const handleRedirect = () => {
+        navigate('/create')
+    }
+
     return (
         <div className='add-patient-container'>
-            <Link to="/create">
-                <button>Agregar nuevo paciente</button>
-            </Link>
+                <button onClick={handleRedirect}>Agregar nuevo paciente</button>
         </div>
     )
 }
