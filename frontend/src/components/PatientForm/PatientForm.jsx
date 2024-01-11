@@ -1,5 +1,5 @@
 import DatePicker from '../DatePicker/DatePicker.jsx'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import postPatient from '../../services/postPatient.js'
 import putPatient from '../../services/putPatient.js'
@@ -39,6 +39,17 @@ const NewPatientForm = ({ editMode, patient }) => {
         });
     };
 
+    const handleBirthDateChange = (value) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            birthDate: value,
+        }));
+    };
+
+    const handleCancel = () => {
+        navigate(`/`)
+    }
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -125,14 +136,12 @@ const NewPatientForm = ({ editMode, patient }) => {
                         onChange={handleChange}
                     />
                 </div>
-                <DatePicker />
+                <DatePicker initialValue={formData.birthDate} onChange={handleBirthDateChange}/>
             </div>
             <div className="new-patient-btn-container">
-                <Link to='/'>
-                    <button className="btn btn-danger">CANCELAR</button>
-                </Link>
+                <button className="btn btn-danger" onClick={handleCancel}>CANCELAR</button>
                 {editMode ?
-                    <button type="submit" className="btn btn-primary">EDITAR</button> :
+                    <button type="submit" className="btn btn-primary">GUARDAR</button> :
                     <button type="submit" className="btn btn-primary">AGREGAR</button>}
             </div>
         </form>

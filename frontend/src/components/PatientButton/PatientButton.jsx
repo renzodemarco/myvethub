@@ -5,10 +5,10 @@ import deleteImg from '../../assets/eliminar.svg'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'
 import deletePatient from '../../services/deletePatient.js'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const PatientButton = ({species, name, owner, id}) => {
-    
+
     const navigate = useNavigate()
     const speciesImg = species == 'canine' ? canine : feline
 
