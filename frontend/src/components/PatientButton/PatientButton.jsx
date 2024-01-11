@@ -5,9 +5,11 @@ import deleteImg from '../../assets/eliminar.svg'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'
 import deletePatient from '../../services/deletePatient.js'
+import { Link, useNavigate } from 'react-router-dom'
 
 const PatientButton = ({species, name, owner, id}) => {
-
+    
+    const navigate = useNavigate()
     const speciesImg = species == 'canine' ? canine : feline
 
     const handleDelete = async () => {
@@ -15,12 +17,15 @@ const PatientButton = ({species, name, owner, id}) => {
             if (confirm('¿Desea eliminar el paciente?')) {
                 await deletePatient(id);
                 alert('Paciente eliminado');
-                window.location.reload()
             }
         } catch (error) {
             console.error(error.message);
         }
     };
+
+    const handleRedirect = () => {
+        navigate(`/edit/${id}`)
+    }
 
     return (
         <li className='patient-list-item'>
@@ -34,8 +39,8 @@ const PatientButton = ({species, name, owner, id}) => {
             <button className="btn btn-primary list-item-btn" title="Ver paciente">
                 <img src={seeImg}></img>
             </button>
-            <button className="btn btn-secondary list-item-btn" title="Editar paciente">
-                <img src={editImg}></img>
+            <button className="btn btn-secondary list-item-btn" title="Editar paciente" onClick={handleRedirect}>
+                    <img src={editImg}></img>
             </button>
             <button className="btn btn-danger list-item-btn" title="Eliminar paciente" onClick={handleDelete}>
                 <img src={deleteImg}></img>

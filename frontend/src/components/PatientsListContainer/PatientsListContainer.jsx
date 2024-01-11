@@ -17,7 +17,7 @@ const PatientsListContainer = () => {
         };
 
         fetchData();
-    }, []);
+    }, [patients]);
 
     return (
         <div className='patients-list-container'>

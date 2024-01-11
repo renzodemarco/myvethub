@@ -49,7 +49,7 @@ const NewPatientForm = ({ editMode, patient }) => {
 
         try {
             if (editMode) {
-                await putPatient(formData)
+                await putPatient(patient._id, formData)
                 alert('Paciente actualizado exitosamente');
             }
             else {
@@ -95,7 +95,7 @@ const NewPatientForm = ({ editMode, patient }) => {
                     <select
                         className="form-select"
                         name="species"
-                        value={patient?.species || ""}
+                        value={formData.species}
                         onChange={handleChange}>
                         <option></option>
                         <option value='canine'>Canino</option>
@@ -107,7 +107,7 @@ const NewPatientForm = ({ editMode, patient }) => {
                     <select
                         className="form-select"
                         name="sex"
-                        value={patient?.sex || ""}
+                        value={formData.sex}
                         onChange={handleChange}>
                         <option></option>
                         <option value='male'>Macho</option>

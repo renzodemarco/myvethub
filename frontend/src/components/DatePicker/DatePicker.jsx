@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import getCurrentAge from '../../utils/getCurrentAge.js'
 import "./DatePicker.css";
+import formatDate from "../../utils/formatDate.js";
 
 const DatePicker = () => {
     const [startDate, setStartDate] = useState('');
@@ -11,10 +12,7 @@ const DatePicker = () => {
     let month = today.getMonth() + 1;
     let day = today.getDate();
 
-    month = month < 10 ? `0${month}` : month;
-    day = day < 10 ? `0${day}` : day;
-
-    const todayFormatted = `${year}-${month}-${day}`;
+    const todayFormatted = formatDate(year, month, day)
 
     useEffect(() => {
         setStartDate(todayFormatted);
