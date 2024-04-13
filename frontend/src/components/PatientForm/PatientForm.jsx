@@ -133,10 +133,10 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
         <DatePicker initialValue={formData.birthDate} onChange={handleBirthDateChange} />
       </div>
       <div className="new-patient-btn-container">
-        <button className="btn btn-danger" onClick={handleClose}>CANCELAR</button>
         {editMode ?
           <button type="submit" className="btn btn-primary">GUARDAR</button> :
           <button type="submit" className="btn btn-primary">AGREGAR</button>}
+        <button className="btn btn-danger" onClick={handleClose}>CANCELAR</button>
       </div>
     </form>
   )
