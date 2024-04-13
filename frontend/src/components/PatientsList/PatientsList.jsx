@@ -1,23 +1,20 @@
 import './PatientsList.css'
-import PatientButton from '../PatientButton/PatientButton'
+import PatientItem from '../PatientItem/PatientItem'
 
-const PatientsList = ({patients}) => {
+const PatientsList = ({ patients }) => {
 
-    return (
-        <ul className='patients-list'> 
-            {patients.map(data => {
-                return (
-                    <PatientButton
-                    species = {data.species}
-                    name = {data.name}
-                    owner = {data.owner}
-                    id = {data._id}
-                    key = {data._id}
-                    />
-                )
-            })}
-        </ul>
-    )
+  return (
+    <ul className='patients-list'>
+      {patients.map(data => {
+        return (
+          <PatientItem
+            data={data}
+            key={data._id}
+          />
+        )
+      })}
+    </ul>
+  )
 }
 
 export default PatientsList

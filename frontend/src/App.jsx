@@ -1,21 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header'
-import Home from './views/Home'
-import Edit from './views/Edit'
-import Create from './views/Create'
-
+import Main from './components/Main/Main'
+import { AppContextProvider } from './context/AppContext'
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/create" element={<Create/>}/>
-        <Route path="/edit/:id" element={<Edit/>}/>
-      </Routes>
-    </BrowserRouter>
+    <AppContextProvider>
+      <Header />
+      <Main />
+    </AppContextProvider>
   )
 }
 

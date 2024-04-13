@@ -1,19 +1,26 @@
+import { useState } from 'react'
 import './AddPatientBtn.css'
-import { useNavigate } from 'react-router-dom'
+import Modal from '../Modal/Modal'
+import NewPatientContainer from '../NewPatientContainer/NewPatientContainer'
 
 const AddPatient = () => {
 
-    const navigate = useNavigate()
-    
-    const handleRedirect = () => {
-        navigate('/create')
-    }
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-    return (
-        <div className='add-patient-container'>
-                <button onClick={handleRedirect}>Agregar nuevo paciente</button>
-        </div>
-    )
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+
+  return (
+    <>
+      <div className='add-patient-container'>
+        <button onClick={() => setIsModalOpen(true)}>Agregar nuevo paciente</button>
+      </div>
+      <Modal isOpen={isModalOpen}>
+        <NewPatientContainer handleClose={handleCloseModal} />
+      </Modal>
+    </>
+  )
 }
 
 export default AddPatient
