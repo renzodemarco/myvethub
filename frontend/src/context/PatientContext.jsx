@@ -5,9 +5,9 @@ import putPatient from '../services/putPatient';
 import deletePatient from '../services/deletePatient';
 
 
-const AppContext = createContext()
+const PatientContext = createContext()
 
-const AppContextProvider = ({ children }) => {
+const PatientContextProvider = ({ children }) => {
 
   const [patients, setPatients] = useState([])
 
@@ -63,12 +63,12 @@ const AppContextProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ patients, fetchPatients, createPatient, updatePatient, destroyPatient }}>
+    <PatientContext.Provider value={{ patients, fetchPatients, createPatient, updatePatient, destroyPatient }}>
       {children}
-    </AppContext.Provider>
+    </PatientContext.Provider>
   );
 };
 
-const useAppContext = () => useContext(AppContext);
+const usePatientContext = () => useContext(PatientContext);
 
-export { AppContextProvider, useAppContext };
+export { PatientContextProvider, usePatientContext };

@@ -1,11 +1,11 @@
 import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
 import './PatientForm.css'
-import { useAppContext } from '../../context/AppContext.jsx'
+import { usePatientContext } from '../../context/PatientContext.jsx'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
-  const { updatePatient, createPatient } = useAppContext()
+  const { updatePatient, createPatient } = usePatientContext()
 
   const [formData, setFormData] = useState({});
 

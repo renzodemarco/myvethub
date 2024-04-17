@@ -1,10 +1,10 @@
 import './PatientsListContainer.css'
 import PatientsList from '../PatientsList/PatientsList'
-import { useAppContext } from '../../context/AppContext';
+import { usePatientContext } from '../../context/PatientContext';
 
 const PatientsListContainer = () => {
 
-    const { patients} = useAppContext()
+    const { patients} = usePatientContext()
 
     return (
         <div className='patients-list-container'>

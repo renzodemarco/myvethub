@@ -1,14 +1,14 @@
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
-import { AppContextProvider } from './context/AppContext'
+import { PatientContextProvider } from './context/PatientContext'
 
 function App() {
 
   return (
-    <AppContextProvider>
+    <PatientContextProvider>
       <Header />
       <Main />
-    </AppContextProvider>
+    </PatientContextProvider>
   )
 }
 

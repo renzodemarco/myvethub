@@ -3,12 +3,13 @@ import PatientsListContainer from '../PatientsListContainer/PatientsListContaine
 import './Main.css'
 
 const Main = () => {
-    return (
-        <main>
-            <Aside/>
-            <PatientsListContainer/>
-        </main>
-    )
+
+  return (
+    <main>
+      <Aside />
+      <PatientsListContainer />
+    </main>
+  )
 }
 
 export default Main
