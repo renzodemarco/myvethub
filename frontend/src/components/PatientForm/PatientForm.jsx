@@ -7,26 +7,18 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
   const { updatePatient, createPatient } = useAppContext()
 
-  const [formData, setFormData] = useState({
-    name: '',
-    owner: '',
-    species: '',
-    sex: '',
-    breed: '',
-    birthDate: ''
-  });
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     if (patient) {
-      setFormData(prevData => ({
-        ...prevData,
+      setFormData({
         name: patient.name || '',
         owner: patient.owner || '',
         species: patient.species || '',
         sex: patient.sex || '',
         breed: patient.breed || '',
         birthDate: patient.birthDate || ''
-      }));
+      });
     }
   }, [editMode, patient]);
 
