@@ -24,6 +24,7 @@ export const GETPatientById = async (req, res, next) => {
 export const POSTPatient = async (req, res, next) => {
     try {
         const data = req.body
+        if (data.sex === '') delete data.sex
         const patient = await patientsServices.postPatient(data)
         return res.status(200).json({ success: true, payload: patient })
     }
@@ -36,6 +37,7 @@ export const PUTPatient = async (req, res, next) => {
     try {
         const id = req.params.id
         const data = req.body
+        if (data.sex === '') delete data.sex
         const patient = await patientsServices.putPatient(id, data)
         return res.status(200).json({ success: true, payload: patient })
     }

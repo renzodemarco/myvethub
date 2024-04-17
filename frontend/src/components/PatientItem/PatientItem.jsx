@@ -4,19 +4,21 @@ import editImg from '../../assets/editar.svg'
 import deleteImg from '../../assets/eliminar.svg'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'
-import deletePatient from '../../services/deletePatient.js'
 import EditPatientContainer from '../EditPatientContainer/EditPatientContainer.jsx'
 import Modal from '../Modal/Modal.jsx'
 import { useState } from 'react'
+import { useAppContext } from '../../context/AppContext.jsx'
 
 const PatientItem = ({ data }) => {
 
   const speciesImg = data.species == 'canine' ? canine : feline
 
+  const { destroyPatient } = useAppContext()
+
   const handleDelete = async () => {
     try {
       if (confirm('¿Desea eliminar el paciente?')) {
-        await deletePatient(data.id);
+        await destroyPatient(data._id);
         alert('Paciente eliminado');
       }
     } catch (error) {

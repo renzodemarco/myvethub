@@ -1,10 +1,11 @@
 import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
-import postPatient from '../../services/postPatient.js'
-import putPatient from '../../services/putPatient.js'
 import './PatientForm.css'
+import { useAppContext } from '../../context/AppContext.jsx'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
+
+  const { updatePatient, createPatient } = useAppContext()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -54,11 +55,11 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
     try {
       if (editMode) {
-        await putPatient(patient._id, formData)
+        await updatePatient(patient._id, formData)
         alert('Paciente actualizado exitosamente');
       }
       else {
-        await postPatient(formData);
+        await createPatient(formData);
         alert('Paciente creado exitosamente');
       }
       handleClose()
@@ -102,7 +103,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             name="species"
             value={formData.species}
             onChange={handleChange}>
-            <option></option>
+            <option value=''></option>
             <option value='canine'>Canino</option>
             <option value='feline'>Felino</option>
           </select>
@@ -114,7 +115,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             name="sex"
             value={formData.sex}
             onChange={handleChange}>
-            <option></option>
+            <option value=''></option>
             <option value='male'>Macho</option>
             <option value='female'>Hembra</option>
           </select>
