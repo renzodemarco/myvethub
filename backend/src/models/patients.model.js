@@ -21,7 +21,10 @@ const patientsSchema = new mongoose.Schema({
     birthDate: String,
     breed: String,
     history: {
-        type: [String],
+        type:  [{
+            dateTime: String,
+            clinicalHistory: String
+        }],
         default: []
     }
 })

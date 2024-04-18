@@ -9,6 +9,7 @@ import Modal from '../Modal/Modal.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
 import { deletePatientAlert, deletePatientConfirm } from '../../utils/alerts.js'
+import PatientCard from '../PatientCard/PatientCard.jsx'
 
 const PatientItem = ({ data }) => {
 
@@ -28,10 +29,15 @@ const PatientItem = ({ data }) => {
     }
   };
 
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
+  }
+
+  const handleEditCloseModal = () => {
+    setIsEditModalOpen(false)
   }
 
   return (
@@ -44,18 +50,21 @@ const PatientItem = ({ data }) => {
           <div className="patient-name fw-bold">{data.name}</div>
           <div className="owner-name">{data.owner}</div>
         </div>
-        <button className="btn btn-primary list-item-btn" title="Ver paciente">
+        <button className="btn btn-primary list-item-btn" title="Ver paciente" onClick={() => setIsModalOpen(true)}>
           <img src={seeImg}></img>
         </button>
-        <button className="btn btn-secondary list-item-btn" title="Editar paciente" onClick={() => setIsModalOpen(true)}>
+        <button className="btn btn-secondary list-item-btn" title="Editar paciente" onClick={() => setIsEditModalOpen(true)}>
           <img src={editImg}></img>
         </button>
         <button className="btn btn-danger list-item-btn" title="Eliminar paciente" onClick={handleDelete}>
           <img src={deleteImg}></img>
         </button>
-      </li>
+      </li> 
+      <Modal isOpen={isEditModalOpen}>
+        <EditPatientContainer data={data} handleClose={handleEditCloseModal} />
+      </Modal>
       <Modal isOpen={isModalOpen}>
-        <EditPatientContainer data={data} handleClose={handleCloseModal} />
+        <PatientCard data={data} handleClose={handleCloseModal} />
       </Modal>
     </>
   )

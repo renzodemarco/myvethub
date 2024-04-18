@@ -34,6 +34,7 @@ ul li {
   background-color: rgba(85, 76, 94, 0.856);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 a {
