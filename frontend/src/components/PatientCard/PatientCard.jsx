@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'
 import getCurrentAge from '../../utils/getCurrentAge'
 import normalizeFromDb from '../../utils/normalizeFromDb'
+import EntriesHistoryContainer from '../EntriesHistoryContainer/EntriesHistoryContainer'
 import PatientEntry from '../PatientEntry/PatientEntry'
 import './PatientCard.css'
 
@@ -10,6 +12,13 @@ const PatientCard = ({ data, handleClose }) => {
   const speciesImg = data.species == 'canine' ? canine : feline
   const age = getCurrentAge(new Date(data.birthDate))
   const patient = normalizeFromDb(data)
+
+  const [selectedEntry, setSelectedEntry] = useState({})
+
+  const handleSelectEntry = (e) => {
+    console.log(e)
+    setSelectedEntry(e)
+  }
 
   return (
     <div className="card">
@@ -38,9 +47,7 @@ const PatientCard = ({ data, handleClose }) => {
           </div>
         </div>
         <div className="current-entry-container">
-          <div className='current-entry'>
-            <PatientEntry data={data} />
-          </div>
+          <PatientEntry data={selectedEntry} />
         </div>
         <div className='card-button-container'>
           <button type="submit" className="btn btn-primary">NUEVA VISITA</button>
@@ -49,8 +56,7 @@ const PatientCard = ({ data, handleClose }) => {
         </div>
       </div>
       <div className="card-entries-container">
-        <div className='card-entries'>
-        </div>
+        <EntriesHistoryContainer data={data.history} onSelect={handleSelectEntry} />
       </div>
     </div>
   )

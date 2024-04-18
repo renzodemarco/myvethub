@@ -1,0 +1,16 @@
+### PUT patient
+PUT http://localhost:8080/api/patients/659c68c3302a09c81a395966
+Content-Type: application/json
+
+{
+  "history": [
+    {
+      "dateTime": "10-04-2024",
+      "entry": "Presenta inflamación de las asas intestinales. Vomitos y diarrea de un día de evolución. Aplico rani, meto, tramadol, clinda, enro."
+    },
+    {
+      "dateTime": "12-04-2024",
+      "entry": "Anduvo mejor. Vomitos y diarrea esporádicos. Ya está comiendo pollo. Aplico rani, meto, tramadol, clinda, enro."
+    }
+  ]
+}

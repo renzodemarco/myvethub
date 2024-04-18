@@ -1,0 +1,29 @@
+.entry-history-card {
+  width: 90%;
+  height: 100px;
+  background-color: rgba(162, 109, 211, 1);
+  border-radius: 12px;
+  padding: 4px;
+  overflow: hidden;
+  border: none;
+  outline: none;
+}
+
+.entry-history-date {
+  font-size: 14px;
+}
+
+.entry-history {
+  font-size: 13px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

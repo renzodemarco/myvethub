@@ -23,7 +23,7 @@ const patientsSchema = new mongoose.Schema({
     history: {
         type:  [{
             dateTime: String,
-            clinicalHistory: String
+            entry: String
         }],
         default: []
     }
