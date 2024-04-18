@@ -20,7 +20,7 @@ const PatientItem = ({ data }) => {
     try {
       const confirmed = await deletePatientConfirm(data.name);
       if (confirmed) {
-        // await destroyPatient(data._id);
+        await destroyPatient(data._id);
         deletePatientAlert(data.name);
       }
     } catch (error) {

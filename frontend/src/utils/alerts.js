@@ -20,7 +20,7 @@ export const updatePatientAlert = () => {
   Swal.fire({
     ...template,
     title: `Paciente modificado exitosamente`,
-    iconColor: 'rgba(200, 200, 200, .7)'
+    iconColor: 'rgba(200, 200, 200, .8)'
   })
 }
 
