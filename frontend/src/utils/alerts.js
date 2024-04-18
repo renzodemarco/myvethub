@@ -31,7 +31,7 @@ export const deletePatientConfirm = (patient) => {
     iconColor: 'rgba(220, 53, 69, .7)',
     showConfirmButton: true,
     showCancelButton: true,
-    confirmButtonColor: 'rgba(220, 53, 69)',
+    confirmButtonColor: 'rgba(220, 53, 69, .8)',
     cancelButtonColor: 'rgba(200, 200, 200)',
     confirmButtonText: 'Eliminar',
     cancelButtonText: 'Cancelar'
