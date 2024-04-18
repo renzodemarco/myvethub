@@ -77,7 +77,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
           <input
             type="text"
             className="form-control"
-            maxLength="40"
+            maxLength="20"
             name="name"
             autoComplete="off"
             value={formData.name}
@@ -89,7 +89,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
           <input
             type="text"
             className="form-control"
-            maxLength="50"
+            maxLength="30"
             name="owner"
             autoComplete="off"
             value={formData.owner}

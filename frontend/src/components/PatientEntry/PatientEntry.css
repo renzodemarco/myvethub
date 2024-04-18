@@ -1,0 +1,19 @@
+.patient-entry-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100%;
+  background-color: rgba(162, 109, 211, 0.2);
+  padding: 16px;
+  max-height: 300px;
+  border-radius: 20px;
+}
+
+.patient-entry-date {
+  font-size: 14px;
+}
+
+.patient-entry {
+  padding: 6px 0;
+}
