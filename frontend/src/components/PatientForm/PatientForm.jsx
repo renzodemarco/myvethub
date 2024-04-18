@@ -2,6 +2,7 @@ import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
 import './PatientForm.css'
 import { usePatientContext } from '../../context/PatientContext.jsx'
+import { createPatientAlert, updatePatientAlert } from '../../utils/alerts.js'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
@@ -48,11 +49,11 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
     try {
       if (editMode) {
         await updatePatient(patient._id, formData)
-        alert('Paciente actualizado exitosamente');
+        updatePatientAlert();
       }
       else {
         await createPatient(formData);
-        alert('Paciente creado exitosamente');
+        createPatientAlert();
       }
       handleClose()
 

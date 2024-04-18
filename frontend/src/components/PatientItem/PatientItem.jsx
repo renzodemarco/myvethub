@@ -8,7 +8,7 @@ import EditPatientContainer from '../EditPatientContainer/EditPatientContainer.j
 import Modal from '../Modal/Modal.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { deletePatientAlert } from '../../utils/alerts.js'
+import { deletePatientAlert, deletePatientConfirm } from '../../utils/alerts.js'
 
 const PatientItem = ({ data }) => {
 
@@ -18,10 +18,11 @@ const PatientItem = ({ data }) => {
 
   const handleDelete = async () => {
     try {
-      // if (confirm('¿Desea eliminar el paciente?')) {
-      //   await destroyPatient(data._id);
-        deletePatientAlert(data)
-      // }
+      const confirmed = await deletePatientConfirm(data.name);
+      if (confirmed) {
+        // await destroyPatient(data._id);
+        deletePatientAlert(data.name);
+      }
     } catch (error) {
       console.error(error.message);
     }
