@@ -18,8 +18,8 @@ const PatientCard = ({ data, handleClose }) => {
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   const handleSelectEntry = (e) => {
-    setIsFormOpen(false)
     setSelectedEntry(e)
+    setIsFormOpen(false)
   }
 
   const handleNewEntry = () => {
