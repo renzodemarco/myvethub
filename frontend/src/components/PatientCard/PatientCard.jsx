@@ -5,6 +5,7 @@ import getCurrentAge from '../../utils/getCurrentAge'
 import normalizeFromDb from '../../utils/normalizeFromDb'
 import EntriesHistoryContainer from '../EntriesHistoryContainer/EntriesHistoryContainer'
 import PatientEntry from '../PatientEntry/PatientEntry'
+import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
 
 const PatientCard = ({ data, handleClose }) => {
@@ -14,10 +15,16 @@ const PatientCard = ({ data, handleClose }) => {
   const patient = normalizeFromDb(data)
 
   const [selectedEntry, setSelectedEntry] = useState({})
+  const [isFormOpen, setIsFormOpen] = useState(false)
 
   const handleSelectEntry = (e) => {
-    console.log(e)
+    setIsFormOpen(false)
     setSelectedEntry(e)
+  }
+
+  const handleNewEntry = () => {
+    setSelectedEntry({})
+    setIsFormOpen(true)
   }
 
   return (
@@ -47,18 +54,35 @@ const PatientCard = ({ data, handleClose }) => {
           </div>
         </div>
         <div className="current-entry-container">
-          <PatientEntry data={selectedEntry} />
+          <PatientEntry data={selectedEntry} isFormOpen={isFormOpen} />
+          <EntryForm data={selectedEntry} isOpen={isFormOpen} />
         </div>
         <div className='card-button-container'>
-          <button type="submit" className="btn btn-primary">NUEVA VISITA</button>
-          <button type="submit" className="btn btn-secondary">EDITAR VISITA</button>
-          <button type="submit" className="btn btn-danger" onClick={handleClose}>VOLVER</button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleNewEntry}
+          >NUEVA VISITA
+          </button>
+          {selectedEntry.entry &&
+            <button
+              type="submit"
+              className="btn btn-secondary"
+              onClick={() => setIsFormOpen(true)}
+            >EDITAR VISITA
+            </button>}
+          <button
+            type="submit"
+            className="btn btn-danger"
+            onClick={handleClose}
+          >VOLVER
+          </button>
         </div>
       </div>
       <div className="card-entries-container">
         <EntriesHistoryContainer data={data.history} onSelect={handleSelectEntry} />
       </div>
-    </div>
+    </div >
   )
 }
 

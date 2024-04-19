@@ -1,8 +1,10 @@
 import './PatientEntry.css'
 
-const PatientEntry = ({ data }) => {
+const PatientEntry = ({ data, isFormOpen }) => {
 
   if (!data.entry) return null
+
+  if (isFormOpen) return null
 
   return (
     <div className='patient-entry-container'>

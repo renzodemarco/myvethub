@@ -5,8 +5,10 @@
   border-radius: 12px;
   padding: 4px;
   overflow: hidden;
-  border: none;
-  outline: none;
+}
+
+.entry-history-card:hover {
+  cursor: pointer;
 }
 
 .entry-history-date {

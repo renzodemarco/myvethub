@@ -40,3 +40,8 @@ ul li {
 a {
   text-decoration: none;
 }
+
+.btn {
+  border: none;
+  outline: none;
+}

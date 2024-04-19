@@ -7,10 +7,10 @@ const EntryHistory = ({ data, onSelect }) => {
   };
 
   return (
-    <button className='entry-history-card' onClick={() => onSelect(data)}>
+    <div className='entry-history-card' onClick={() => onSelect(data)}>
       <p className='entry-history-date '>{data.dateTime}</p>
       <p className={`entry-history ${hasOverflow ? 'ellipsis' : ''}`}>{data.entry}</p>
-    </button>
+    </div>
   )
 }
 
