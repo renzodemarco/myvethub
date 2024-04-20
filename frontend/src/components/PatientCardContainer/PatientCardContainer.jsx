@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import PatientCard from '../PatientCard/PatientCard'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'

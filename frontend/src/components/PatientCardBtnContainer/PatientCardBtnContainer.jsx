@@ -2,20 +2,20 @@ import './PatientCardBtnContainer.css'
 
 const PatientCardBtnContainer = (props) => {
 
-  const { handleClose, handleCancel, handleNewEntry, setIsFormOpen, isEntryOpen, editMode } = props
+  const { handleClose, handleCancel, handleNewEntry, setIsFormOpen, isEntryOpen, editMode, createEntry, deleteEntry } = props
 
   if (editMode) return (
     <div className='card-button-container'>
       <button
         type="submit"
         className="btn btn-primary"
-        onClick={handleNewEntry}
+        onClick={createEntry}
       >GUARDAR
       </button>
       <button
         type="submit"
         className="btn btn-danger"
-        onClick={(handleCancel)}
+        onClick={handleCancel}
       >CANCELAR
       </button>
     </div>
@@ -30,19 +30,29 @@ const PatientCardBtnContainer = (props) => {
       >NUEVA VISITA
       </button>
       {isEntryOpen &&
+      <>
         <button
           type="submit"
           className="btn btn-secondary"
           onClick={() => setIsFormOpen(true)}
         >EDITAR VISITA
         </button>
+        <button
+        type="submit"
+        className="btn btn-danger"
+        onClick={deleteEntry}
+      >ELIMINAR VISITA
+      </button>
+        </>
       }
-      <button
+      {!isEntryOpen &&
+        <button
         type="submit"
         className="btn btn-danger"
         onClick={handleClose}
       >VOLVER
       </button>
+      }
     </div>
   )
 }

@@ -4,7 +4,6 @@ import postPatient from '../services/postPatient';
 import putPatient from '../services/putPatient';
 import deletePatient from '../services/deletePatient';
 
-
 const PatientContext = createContext()
 
 const PatientContextProvider = ({ children }) => {
@@ -17,7 +16,7 @@ const PatientContextProvider = ({ children }) => {
         const data = await getPatients()
         setPatients(data.payload);
       } catch (error) {
-        console.error('Error fetching patients:', error);
+        console.error(error);
       }
     }
     fetchData()
@@ -28,7 +27,7 @@ const PatientContextProvider = ({ children }) => {
       const newData = await getPatients()
       setPatients(newData.payload);
     } catch (error) {
-      console.error('Error fetching patients:', error);
+      console.error(error);
     }
   }
 
@@ -38,7 +37,7 @@ const PatientContextProvider = ({ children }) => {
       const newData = await getPatients()
       setPatients(newData.payload);
     } catch (error) {
-      console.error('Error creating patient:', error);
+      console.error(error);
     }
   }
 
@@ -48,7 +47,7 @@ const PatientContextProvider = ({ children }) => {
       const newData = await getPatients()
       setPatients(newData.payload);
     } catch (error) {
-      console.error('Error updating patient:', error);
+      console.error(error);
     }
   }
 
@@ -58,12 +57,20 @@ const PatientContextProvider = ({ children }) => {
       const newData = await getPatients()
       setPatients(newData.payload);
     } catch (error) {
-      console.error('Error deleting patient:', error);
+      console.error(error);
+    }
+  }
+
+  const updateHistory = async (id, data) => {
+    try {
+      await updatePatient(id, { history: data })
+    } catch (error) {d
+      console.error(error);
     }
   }
 
   return (
-    <PatientContext.Provider value={{ patients, fetchPatients, createPatient, updatePatient, destroyPatient }}>
+    <PatientContext.Provider value={{ patients, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory }}>
       {children}
     </PatientContext.Provider>
   );

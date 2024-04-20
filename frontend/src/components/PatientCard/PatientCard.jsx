@@ -4,19 +4,25 @@ import PatientEntry from '../PatientEntry/PatientEntry'
 import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
 import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnContainer'
+import { usePatientContext } from '../../context/PatientContext'
 
 const PatientCard = ({ data, handleClose }) => {
 
+  const { updateHistory } = usePatientContext()
+
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [selectedEntry, setSelectedEntry] = useState({})
+  const [entryValue, setEntryValue] = useState('')
 
   const handleSelectEntry = (e) => {
     setSelectedEntry(e)
+    setEntryValue(e.entry)
     setIsFormOpen(false)
   }
 
   const handleNewEntry = () => {
     setSelectedEntry({})
+    setEntryValue('')
     setIsFormOpen(true)
   }
 
@@ -24,9 +30,29 @@ const PatientCard = ({ data, handleClose }) => {
     setIsFormOpen(false)
   }
 
-  const createNewEntry = (entry) => {
-    data.history.push(entry)
+  const createEntry = async () => {
+    const newEntry = {
+      dateTime: new Date().toLocaleDateString(),
+      entry: entryValue
+    }
+    data.history.push(newEntry)
+    await updateHistory(data._id, data.history)
+    setIsFormOpen(false)
   }
+
+  const deleteEntry = async () => {
+    const newData = data.history.filter(entry => entry._id !== selectedEntry._id)
+    await updateHistory(data._id, newData)
+    setSelectedEntry({})
+  }
+
+  const editEntry = async (entry) => {
+    const index = data.history.findIndex(e => e === selectedEntry)
+  }
+
+  const handleEntryChange = (event) => {
+    setEntryValue(event.target.value);
+  };
 
   return (
     <div className="card">
@@ -56,15 +82,23 @@ const PatientCard = ({ data, handleClose }) => {
         </div>
         <div className="current-entry-container">
           <PatientEntry data={selectedEntry} isFormOpen={isFormOpen} />
-          <EntryForm data={selectedEntry} isOpen={isFormOpen} />
+          <EntryForm
+            data={selectedEntry}
+            isOpen={isFormOpen}
+            handleEntryChange={handleEntryChange}
+            entryValue={entryValue}
+          />
         </div>
-        <PatientCardBtnContainer 
+        <PatientCardBtnContainer
           handleClose={handleClose}
           handleCancel={handleCancel}
           handleNewEntry={handleNewEntry}
           setIsFormOpen={setIsFormOpen}
           isEntryOpen={selectedEntry.entry}
           editMode={isFormOpen}
+          createEntry={createEntry}
+          editEntry={editEntry}
+          deleteEntry={deleteEntry}
         />
       </div>
       <div className="card-entries-container">
