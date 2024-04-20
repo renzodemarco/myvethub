@@ -9,7 +9,7 @@ import Modal from '../Modal/Modal.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
 import { deletePatientAlert, deletePatientConfirm } from '../../utils/alerts.js'
-import PatientCard from '../PatientCard/PatientCard.jsx'
+import PatientCardContainer from '../PatientCardContainer/PatientCardContainer.jsx'
 
 const PatientItem = ({ data }) => {
 
@@ -64,7 +64,7 @@ const PatientItem = ({ data }) => {
         <EditPatientContainer data={data} handleClose={handleEditCloseModal} />
       </Modal>
       <Modal isOpen={isModalOpen}>
-        <PatientCard data={data} handleClose={handleCloseModal} />
+        <PatientCardContainer data={data} handleClose={handleCloseModal} />
       </Modal>
     </>
   )

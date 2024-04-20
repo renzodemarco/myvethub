@@ -1,0 +1,13 @@
+.card-button-container {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.card-button-container button {
+  border: none;
+  height: 2.4rem;
+  width: 9rem;
+}

@@ -3,12 +3,14 @@ import './EntryForm.css'
 
 const EntryForm = ({ isOpen, data }) => {
 
+  const template = 'MOTIVO DE CONSULTA: \nANAMNESIS: \nEX. FÍSICO: \nD. PRESUNTIVO: \nTRATAMIENTO: '
+
   if (!isOpen) return null
 
   const [entryValue, setEntryValue] = useState('')
 
   useEffect(() => {
-    setEntryValue(data.entry ? data.entry : '')
+    setEntryValue(data.entry ? data.entry : template)
     }, [data])
 
   const handleChange = (event) => {

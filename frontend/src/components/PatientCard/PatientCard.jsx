@@ -1,21 +1,14 @@
 import { useState } from 'react'
-import canine from '../../assets/canino.svg'
-import feline from '../../assets/felino.svg'
-import getCurrentAge from '../../utils/getCurrentAge'
-import normalizeFromDb from '../../utils/normalizeFromDb'
 import EntriesHistoryContainer from '../EntriesHistoryContainer/EntriesHistoryContainer'
 import PatientEntry from '../PatientEntry/PatientEntry'
 import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
+import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnContainer'
 
 const PatientCard = ({ data, handleClose }) => {
 
-  const speciesImg = data.species == 'canine' ? canine : feline
-  const age = getCurrentAge(new Date(data.birthDate))
-  const patient = normalizeFromDb(data)
-
-  const [selectedEntry, setSelectedEntry] = useState({})
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const [selectedEntry, setSelectedEntry] = useState({})
 
   const handleSelectEntry = (e) => {
     setSelectedEntry(e)
@@ -27,28 +20,36 @@ const PatientCard = ({ data, handleClose }) => {
     setIsFormOpen(true)
   }
 
+  const handleCancel = () => {
+    setIsFormOpen(false)
+  }
+
+  const createNewEntry = (entry) => {
+    data.history.push(entry)
+  }
+
   return (
     <div className="card">
       <div className='card-body'>
         <button type="button" className="btn-close" onClick={handleClose} />
         <div className="card-info-container">
           <div className="card-info-img">
-            <img className="card-img" src={speciesImg} />
+            <img className="card-img" src={data.image} />
           </div>
           <div className='card-patient-name'>
-            <h3 id="nombrePacActual">{patient.name}</h3>
-            <h4 id="propPacActual">{patient.owner}</h4>
+            <h3 id="nombrePacActual">{data.name}</h3>
+            <h4 id="propPacActual">{data.owner}</h4>
           </div>
           <div className='card-patient-info'>
             <ul className="list-group" >
               <li className="list-group-item">Sexo:
-                <p>{patient.sex}</p>
+                <p>{data.sex}</p>
               </li>
               <li className="list-group-item">Edad:
-                <p>{age}</p>
+                <p>{data.age}</p>
               </li>
               <li className="list-group-item">Raza:
-                <p>{patient.breed}</p>
+                <p>{data.breed}</p>
               </li>
             </ul>
           </div>
@@ -57,27 +58,14 @@ const PatientCard = ({ data, handleClose }) => {
           <PatientEntry data={selectedEntry} isFormOpen={isFormOpen} />
           <EntryForm data={selectedEntry} isOpen={isFormOpen} />
         </div>
-        <div className='card-button-container'>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleNewEntry}
-          >NUEVA VISITA
-          </button>
-          {selectedEntry.entry &&
-            <button
-              type="submit"
-              className="btn btn-secondary"
-              onClick={() => setIsFormOpen(true)}
-            >EDITAR VISITA
-            </button>}
-          <button
-            type="submit"
-            className="btn btn-danger"
-            onClick={handleClose}
-          >VOLVER
-          </button>
-        </div>
+        <PatientCardBtnContainer 
+          handleClose={handleClose}
+          handleCancel={handleCancel}
+          handleNewEntry={handleNewEntry}
+          setIsFormOpen={setIsFormOpen}
+          isEntryOpen={selectedEntry.entry}
+          editMode={isFormOpen}
+        />
       </div>
       <div className="card-entries-container">
         <EntriesHistoryContainer data={data.history} onSelect={handleSelectEntry} />
