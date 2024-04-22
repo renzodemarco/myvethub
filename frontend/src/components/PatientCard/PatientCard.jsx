@@ -7,7 +7,7 @@ import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnCo
 import { usePatientContext } from '../../context/PatientContext'
 
 const PatientCard = ({ data, handleClose }) => {
-
+  
   const { updateHistory } = usePatientContext()
 
   const [isFormOpen, setIsFormOpen] = useState(false)

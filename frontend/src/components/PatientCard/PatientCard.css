@@ -16,7 +16,7 @@
 }
 
 .btn-close {
-  position: fixed;
+  position: absolute;
   padding: 12px;
 }
 

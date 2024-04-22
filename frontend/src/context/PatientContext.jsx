@@ -64,7 +64,8 @@ const PatientContextProvider = ({ children }) => {
   const updateHistory = async (id, data) => {
     try {
       await updatePatient(id, { history: data })
-    } catch (error) {d
+    } catch (error) {
+      d
       console.error(error);
     }
   }

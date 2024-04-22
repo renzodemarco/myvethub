@@ -6,14 +6,16 @@ import normalizeFromDb from '../../utils/normalizeFromDb'
 
 const PatientCardContainer = ({ data, handleClose }) => {
 
-  data = normalizeFromDb(data)
-  data.image = data.species == 'canine' ? canine : feline
-  data.age = getCurrentAge(new Date(data.birthDate))
+  const patient = { ...data };
+
+  normalizeFromDb(patient)
+  patient.species = data.species == 'canine' ? canine : feline
+  patient.age = getCurrentAge(new Date(data.birthDate))
 
   return (
     <div>
       <PatientCard
-        data={data}
+        data={patient}
         handleClose={handleClose}
       />
     </div>
