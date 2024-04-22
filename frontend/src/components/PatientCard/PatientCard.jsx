@@ -46,8 +46,16 @@ const PatientCard = ({ data, handleClose }) => {
     setSelectedEntry({})
   }
 
-  const editEntry = async (entry) => {
-    const index = data.history.findIndex(e => e === selectedEntry)
+  const editEntry = async () => {
+    const newEntry = {
+      dateTime: new Date().toLocaleDateString(),
+      entry: entryValue
+    }
+    const index = data.history.findIndex(e => e._id === selectedEntry._id)
+    if (index !== -1)  data.history[index] = newEntry;
+    else console.log('No se ha encontrado la visita en el historial del paciente');
+    await updateHistory(data._id, data.history)
+    setIsFormOpen(false)
   }
 
   const handleEntryChange = (event) => {
@@ -96,9 +104,8 @@ const PatientCard = ({ data, handleClose }) => {
           setIsFormOpen={setIsFormOpen}
           isEntryOpen={selectedEntry.entry}
           editMode={isFormOpen}
-          createEntry={createEntry}
-          editEntry={editEntry}
-          deleteEntry={deleteEntry}
+          handleSave={selectedEntry.entry ? editEntry : createEntry}
+          handleDelete={deleteEntry}
         />
       </div>
       <div className="card-entries-container">

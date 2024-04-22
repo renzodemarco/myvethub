@@ -1,38 +1,38 @@
 .new-patient-form-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 1rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1rem 2rem 2rem;
 }
 
 .mb-3 {
-    margin: 1rem 2rem;
+  margin: 1rem 2rem;
 }
 
 .new-patient-form label {
-    padding-left: .2rem;
-    margin-bottom: .2rem;
+  padding-left: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .new-patient-form input[type="text"] {
-    width: 14rem;
+  width: 14rem;
 }
 
 .new-patient-form input[type="select"] {
-    width: 8rem;
+  width: 8rem;
 }
 
 .new-patient-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
-    width: 100%;
-    padding: 1rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  padding: 1rem 0 3rem;
 }
 
 .new-patient-btn-container button {
-    border: none;
-    height: 2.4rem;
-    width: 7rem;
+  border: none;
+  height: 2.6rem;
+  width: 10.4rem;
 }
