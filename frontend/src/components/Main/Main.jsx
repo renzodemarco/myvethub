@@ -1,13 +1,38 @@
+import { useState } from 'react'
 import Aside from '../Aside/Aside'
-import PatientsListContainer from '../PatientsListContainer/PatientsListContainer'
 import './Main.css'
+import { usePatientContext } from '../../context/PatientContext'
+import PatientsList from '../PatientsList/PatientsList'
 
 const Main = () => {
 
+  const { patients } = usePatientContext()
+
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchBy, setSearchBy] = useState('name')
+
+  const filteredPatients = patients.filter(patient => {
+    const value = patient[searchBy].toLowerCase();
+    return value.includes(searchTerm.toLowerCase());
+  });
+
+  const handleSearchTerm = (event) => {
+    setSearchTerm(event.target.value)
+  }
+
+  const handleSearchBy = (event) => {
+    setSearchBy(event.target.value)
+  }
+
   return (
     <main>
-      <Aside />
-      <PatientsListContainer />
+      <Aside
+        searchTerm={searchTerm}
+        searchBy={searchBy}
+        handleSearchTerm={handleSearchTerm}
+        handleSearchBy={handleSearchBy}
+      />
+      <PatientsList patients={filteredPatients} />
     </main>
   )
 }
