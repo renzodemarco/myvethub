@@ -11,10 +11,42 @@
   border-radius: 20px;
 }
 
+.patient-entry-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .patient-entry-date {
   font-size: 14px;
 }
 
 .patient-entry {
   padding: 6px 0;
+}
+
+.patient-entry-btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 14px
+}
+
+.patient-entry-btn {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  opacity: 40%;
+  border-radius: 40%;
+}
+
+.patient-entry-btn:hover {
+  opacity: 80%;
+}
+
+.patient-entry-btn img {
+  width: 1rem;
 }

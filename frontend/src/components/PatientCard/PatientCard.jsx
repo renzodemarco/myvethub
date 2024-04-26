@@ -7,7 +7,7 @@ import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnCo
 import { usePatientContext } from '../../context/PatientContext'
 
 const PatientCard = ({ data, handleClose }) => {
-  
+
   const { updateHistory } = usePatientContext()
 
   const [isFormOpen, setIsFormOpen] = useState(false)
@@ -52,7 +52,7 @@ const PatientCard = ({ data, handleClose }) => {
       entry: entryValue
     }
     const index = data.history.findIndex(e => e._id === selectedEntry._id)
-    if (index !== -1)  data.history[index] = newEntry;
+    if (index !== -1) data.history[index] = newEntry;
     else console.log('No se ha encontrado la visita en el historial del paciente');
     await updateHistory(data._id, data.history)
     setIsFormOpen(false)
@@ -89,9 +89,13 @@ const PatientCard = ({ data, handleClose }) => {
           </div>
         </div>
         <div className="current-entry-container">
-          <PatientEntry data={selectedEntry} isFormOpen={isFormOpen} />
-          <EntryForm
+          <PatientEntry
             data={selectedEntry}
+            isFormOpen={isFormOpen}
+            handleDelete={deleteEntry}
+            setIsFormOpen={setIsFormOpen}
+          />
+          <EntryForm
             isOpen={isFormOpen}
             handleEntryChange={handleEntryChange}
             entryValue={entryValue}
@@ -101,11 +105,8 @@ const PatientCard = ({ data, handleClose }) => {
           handleClose={handleClose}
           handleCancel={handleCancel}
           handleNewEntry={handleNewEntry}
-          setIsFormOpen={setIsFormOpen}
-          isEntryOpen={selectedEntry.entry}
           editMode={isFormOpen}
           handleSave={selectedEntry.entry ? editEntry : createEntry}
-          handleDelete={deleteEntry}
         />
       </div>
       <div className="card-entries-container">

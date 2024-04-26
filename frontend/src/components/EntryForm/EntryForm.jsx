@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import './EntryForm.css'
 
 const EntryForm = ({ isOpen, entryValue, handleEntryChange }) => {
