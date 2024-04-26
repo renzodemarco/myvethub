@@ -15,6 +15,6 @@
 }
 
 .entries-history-container::-webkit-scrollbar-thumb {
-  background-color: rgba(162, 109, 211, .9);
+  background-color: rgba(162, 109, 211, .3);
   border-radius: 6px;
 }

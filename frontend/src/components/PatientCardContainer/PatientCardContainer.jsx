@@ -13,12 +13,12 @@ const PatientCardContainer = ({ data, handleClose }) => {
   patient.age = getCurrentAge(new Date(data.birthDate))
 
   return (
-    <div>
+    <>
       <PatientCard
         data={patient}
         handleClose={handleClose}
       />
-    </div>
+    </>
   )
 }
 

@@ -7,7 +7,7 @@
   width: 90%;
   background-color: rgba(162, 109, 211, 0.2);
   padding: 16px;
-  max-height: 300px;
+  max-height: 255px;
   border-radius: 20px;
 }
 
@@ -19,11 +19,24 @@
 }
 
 .patient-entry-date {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .patient-entry {
-  padding: 6px 0;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  overflow: auto;
+  scrollbar-width: 6px;
+}
+
+.patient-entry::-webkit-scrollbar {
+  width: 6px;
+}
+
+.patient-entry::-webkit-scrollbar-thumb {
+  background-color: rgba(162, 109, 211, .3);
+  border-radius: 6px;
 }
 
 .patient-entry-btn-container {
@@ -39,12 +52,12 @@
   justify-content: center;
   align-items: center;
   border: none;
-  opacity: 20%;
+  opacity: 30%;
   border-radius: 40%;
 }
 
 .patient-entry-btn:hover {
-  opacity: 80%;
+  opacity: 70%;
 }
 
 .patient-entry-btn img {

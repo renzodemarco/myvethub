@@ -33,7 +33,7 @@ const PatientCardBtnContainer = (props) => {
         type="submit"
         className="btn btn-danger"
         onClick={handleClose}
-      >VOLVER
+      >CERRAR
       </button>
     </div>
   )

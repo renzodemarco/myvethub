@@ -23,7 +23,7 @@ const PatientEntry = ({ data, isFormOpen, handleDelete, setIsFormOpen }) => {
           </button>
         </div>
       </div>
-      <div className='patient-entry'>
+      <div className='patient-entry' style={{whiteSpace:'pre-line'}}>
         {data.entry}
       </div>
     </div>
