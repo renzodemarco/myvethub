@@ -47,3 +47,36 @@ export const deletePatientAlert = (patient) => {
     iconColor: 'rgba(220, 53, 69, .7)'
   })
 }
+
+export const createVisitAlert = () => {
+  Swal.fire({
+    ...template,
+    title: 'Visita registrada exitosamente'
+  })
+}
+
+
+export const deleteVisitConfirm = () => {
+  return Swal.fire({
+    title: `¿Desea eliminar la visita?`,
+    icon: 'warning',
+    iconColor: 'rgba(220, 53, 69, .7)',
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonColor: 'rgba(220, 53, 69, .8)',
+    cancelButtonColor: 'rgba(200, 200, 200)',
+    confirmButtonText: 'Eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    return result.isConfirmed;
+  });
+}
+
+export const deleteVisitAlert = () => {
+  Swal.fire({
+    ...template,
+    title: 'Se ha eliminado la visita',
+    icon: 'success',
+    iconColor: 'rgba(220, 53, 69, .7)'
+  })
+}

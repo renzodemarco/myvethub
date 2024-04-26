@@ -9,7 +9,7 @@ const PatientCardContainer = ({ data, handleClose }) => {
   const patient = { ...data };
 
   normalizeFromDb(patient)
-  patient.species = data.species == 'canine' ? canine : feline
+  patient.image = data.species == 'canine' ? canine : feline
   patient.age = getCurrentAge(new Date(data.birthDate))
 
   return (

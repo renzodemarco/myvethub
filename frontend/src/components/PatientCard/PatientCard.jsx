@@ -5,6 +5,7 @@ import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
 import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnContainer'
 import { usePatientContext } from '../../context/PatientContext'
+import { createVisitAlert, deleteVisitAlert, deleteVisitConfirm } from '../../utils/alerts'
 
 const PatientCard = ({ data, handleClose }) => {
 
@@ -38,12 +39,22 @@ const PatientCard = ({ data, handleClose }) => {
     data.history.push(newEntry)
     await updateHistory(data._id, data.history)
     setIsFormOpen(false)
+    createVisitAlert()
   }
 
   const deleteEntry = async () => {
-    const newData = data.history.filter(entry => entry._id !== selectedEntry._id)
-    await updateHistory(data._id, newData)
-    setSelectedEntry({})
+    try {
+      const confirmed = await deleteVisitConfirm();
+      if (confirmed) {
+        const newData = data.history.filter(entry => entry._id !== selectedEntry._id)
+        await updateHistory(data._id, newData)
+        setSelectedEntry({})
+        deleteVisitAlert()
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+
   }
 
   const editEntry = async () => {

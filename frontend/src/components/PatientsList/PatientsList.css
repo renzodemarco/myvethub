@@ -1,7 +1,17 @@
 .patients-list {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    overflow: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  scrollbar-width: 8px
+}
+
+.patients-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.patients-list::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 21, 126, 0.3);
+  border-radius: 8px
 }

@@ -1,7 +1,7 @@
 .entry-history-card {
   width: 90%;
-  height: 100px;
-  background-color: rgba(162, 109, 211, 1);
+  min-height: 100px;
+  background-color: rgba(162, 109, 211, .9);
   border-radius: 12px;
   padding: 4px;
   overflow: hidden;
