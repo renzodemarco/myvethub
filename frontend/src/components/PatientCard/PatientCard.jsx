@@ -56,6 +56,7 @@ const PatientCard = ({ data, handleClose }) => {
     else console.log('No se ha encontrado la visita en el historial del paciente');
     await updateHistory(data._id, data.history)
     setIsFormOpen(false)
+    setSelectedEntry(newEntry)
   }
 
   const handleEntryChange = (event) => {
