@@ -12,6 +12,6 @@
 }
 
 .patients-list::-webkit-scrollbar-thumb {
-  background-color: rgba(75, 21, 126, 0.3);
+  background-color: rgba(75, 21, 126, 0.2);
   border-radius: 8px
 }
