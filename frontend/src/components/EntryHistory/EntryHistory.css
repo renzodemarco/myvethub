@@ -1,7 +1,7 @@
 .entry-history-card {
   width: 90%;
-  min-height: 110px;
-  height: 110px;
+  min-height: 6.87rem;
+  height: 6.87rem;
   background-color: rgba(162, 109, 211, .9);
   border-radius: 12px;
   padding: 6px;
@@ -18,12 +18,12 @@
 }
 
 .entry-history-date {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
 .entry-history {
-  font-size: 13px;
+  font-size: 0.8rem;
   font-weight: 500;
   height: 100%;
   width: 100%;

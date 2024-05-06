@@ -85,8 +85,8 @@ h4 {
 }
 
 .card-entries-container {
-  width: 240px;
+  width: 15rem;
   height: 100%;
-  padding: 14px;
+  padding: 0.87rem;
   background-color: rgb(80, 38, 120);
 }

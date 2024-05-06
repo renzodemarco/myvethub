@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 16px;
 }
 
@@ -19,7 +19,7 @@ body {
   display: grid;
   grid:
     "header" 8rem
-    "main" calc(100vh - 8rem)
+    "main" calc(100vh - 8rem);
 }
 
 ul li {
@@ -44,4 +44,16 @@ a {
 .btn {
   border: none;
   outline: none;
+}
+
+@media screen and (min-width: 1500px) {
+  * {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  * {
+    font-size: 19px;
+  }
 }
