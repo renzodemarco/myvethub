@@ -6,8 +6,8 @@
   height: 100%;
   width: 90%;
   background-color: rgba(162, 109, 211, 0.2);
-  padding: 16px;
-  max-height: 255px;
+  padding: 1rem;
+  max-height: 16rem;
   border-radius: 20px;
 }
 
@@ -19,12 +19,12 @@
 }
 
 .patient-entry-date {
-  font-size: 15px;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .patient-entry {
-  margin-top: 12px;
+  margin-top: 0.75rem;
   margin-bottom: 6px;
   overflow: auto;
   scrollbar-width: 6px;

@@ -1,10 +1,10 @@
 .entry-history-card {
   width: 90%;
-  min-height: 6.87rem;
-  height: 6.87rem;
+  min-height: 6.8rem;
+  height: 6.8rem;
   background-color: rgba(162, 109, 211, .9);
   border-radius: 12px;
-  padding: 6px;
+  padding: .5rem;
   overflow: hidden;
 }
 

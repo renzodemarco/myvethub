@@ -57,3 +57,27 @@ a {
     font-size: 19px;
   }
 }
+
+@media screen and (min-width: 1700px) {
+  * {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  * {
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  * {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  * {
+    font-size: 23px;
+  }
+}
