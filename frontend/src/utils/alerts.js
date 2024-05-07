@@ -80,3 +80,12 @@ export const deleteVisitAlert = () => {
     iconColor: 'rgba(220, 53, 69, .7)'
   })
 }
+
+export const incompleteFields = () => {
+  Swal.fire({
+    ...template,
+    title: 'Complete los campos obligatorios',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)'
+  })
+}

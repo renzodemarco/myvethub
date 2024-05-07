@@ -46,6 +46,18 @@ a {
   outline: none;
 }
 
+@media screen and (max-width: 1200px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  * {
+    font-size: 12px;
+  }
+}
+
 @media screen and (min-width: 1500px) {
   * {
     font-size: 18px;
@@ -79,5 +91,17 @@ a {
 @media screen and (min-width: 2000px) {
   * {
     font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 2200px) {
+  * {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-width: 2400px) {
+  * {
+    font-size: 28px;
   }
 }

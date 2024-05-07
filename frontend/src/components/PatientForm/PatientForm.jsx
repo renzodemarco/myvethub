@@ -2,7 +2,7 @@ import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
 import './PatientForm.css'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { createPatientAlert, updatePatientAlert } from '../../utils/alerts.js'
+import { createPatientAlert, incompleteFields, updatePatientAlert } from '../../utils/alerts.js'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
@@ -49,7 +49,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
     e.preventDefault();
 
     if (!formData.name || !formData.owner || !formData.species) {
-      alert('Complete los campos obligatorios');
+      incompleteFields()
       return;
     }
 

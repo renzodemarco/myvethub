@@ -17,7 +17,7 @@
 
 .btn-close {
   position: absolute;
-  padding: 12px;
+  padding: .75rem;
 }
 
 .card-info-container {
@@ -89,4 +89,34 @@ h4 {
   height: 100%;
   padding: 0.87rem;
   background-color: rgb(80, 38, 120);
+}
+
+@media screen and (max-width: 1300px) {
+
+  .card-info-container {
+    margin-top: .2rem;
+    height: 6.2rem;
+  }
+
+  .card-img {
+    width: 6rem
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .list-group-item {
+    font-size: .9rem;
+    margin: .4rem 0;
+  }
+
+  .list-group-item p {
+    font-size: .9rem;
+    margin: 0
+  }
 }
