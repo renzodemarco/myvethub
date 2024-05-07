@@ -1,9 +1,9 @@
 .card-button-container {
-  height: 120px;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .card-button-container button {
