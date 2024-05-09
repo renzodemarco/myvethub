@@ -30,4 +30,8 @@
     width: 40%;
     flex: 1;
   }
+
+  .add-patient-container button {
+    font-size: 1.1rem;
+  }
 }

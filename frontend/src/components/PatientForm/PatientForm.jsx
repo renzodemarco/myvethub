@@ -76,7 +76,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
           <label className="form-label">Nombre del paciente</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control form-text-input"
             maxLength="20"
             name="name"
             autoComplete="off"
@@ -124,7 +124,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
           <label className="form-label">Raza</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control form-text-input"
             name="breed"
             autoComplete="off"
             value={formData.breed}

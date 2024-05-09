@@ -27,6 +27,7 @@
 @media screen and (max-width: 768px) {
   .date-picker-container {
     flex-direction: column;
+    width: 14rem;
   }
   .current-age p {
     height: 1.4rem;

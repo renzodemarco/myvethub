@@ -47,11 +47,18 @@ h4 {
   font-size: 1.6rem;
 }
 
+.card-patient-info {
+  min-width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
 .list-group {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  gap: .6rem;
 }
 
 .list-group-item {
@@ -67,6 +74,8 @@ h4 {
 }
 
 .list-group-item p {
+  padding: 0;
+  margin: 0;
   font-weight: 400;
   padding-left: 4px;
 }
@@ -105,12 +114,58 @@ h4 {
   h3 {
     font-size: 2.4rem;
   }
+}
 
-  .list-group-item {
-    margin: .4rem 0;
+@media screen and (max-width: 876px) {
+  .card-info-container {
+    padding: 1rem 1rem;
+  }
+  
+  .card-img {
+    width: 6rem;
   }
 
+  .btn-close {
+    display: none;
+  }
+
+  .card-entries-container {
+    width: 12rem;
+    padding: 0.4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-info-container {
+    height: 7rem;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 .4rem;
+    gap: 1rem
+  }
+
+  .card-img {
+    width: 4rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  .list-group-item {
+    font-size: .8rem;
+  }
+  
   .list-group-item p {
-    margin: 0
+    font-size: .8rem;
+  }
+
+  .current-entry-container {
+    padding: 0.8rem 0;
   }
 }
