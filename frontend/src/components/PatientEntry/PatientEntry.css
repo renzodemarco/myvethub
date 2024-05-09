@@ -62,3 +62,9 @@
 .patient-entry-btn img {
   width: 1rem;
 }
+
+@media screen and (max-width: 667px) {
+  .patient-entry-container {
+    width: 96%;
+  }
+}

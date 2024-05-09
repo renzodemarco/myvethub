@@ -35,3 +35,9 @@
     font-size: 1.1rem;
   }
 }
+
+@media screen and (max-width: 667px) {
+  .add-patient-container {
+    width: 100%;
+  }
+}

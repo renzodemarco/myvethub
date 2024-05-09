@@ -1,23 +1,41 @@
 .new-patient-container {
-    width: 80%;
-    height: fit-content;
-    background-color:rgb(218, 212, 224);
-    display: flex;
-    flex-direction: column;
+  width: 80%;
+  height: fit-content;
+  background-color: rgb(218, 212, 224);
+  display: flex;
+  flex-direction: column;
 }
 
 .new-patient-title {
-    height: 3.4em;
-    background-color:rgb(75, 21, 126);
-    color: #fff;
-    font-size: 36px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 7rem;
+  background-color: rgb(75, 21, 126);
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
-    font-weight: bold;
-    font-size: 2.4rem;
+  font-weight: bold;
+  font-size: 2.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .new-patient-container {
+    width: 90%;
+  }
+  .new-patient-title {
+    height: 6rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+
+@media screen and (max-width: 667px) {
+
 }

@@ -18,3 +18,10 @@
   resize: none;
   outline: none;
 }
+
+@media screen and (max-width: 667px) {
+  .entry-form-container {
+    padding: .8rem;
+    width: 100%;
+  }
+}

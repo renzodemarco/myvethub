@@ -45,4 +45,37 @@
   .new-patient-btn-container {
     padding: 1.6rem 0;
   }
+
+  .new-patient-form label {
+    font-size: .9rem;
+  }
+
+  .form-text-input {
+    font-size: .9rem;
+  }
+  
+  .form-select {
+    font-size: .9rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .mb-3 {
+    margin: .8rem 1.4rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .new-patient-form-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mb-3 {
+    margin: .2rem 1rem;
+  }
+
+  .new-patient-btn-container {
+    gap: 6vw
+  }
 }

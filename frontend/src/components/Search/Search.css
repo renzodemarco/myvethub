@@ -36,3 +36,23 @@
     padding: 0.2rem;
   }
 }
+
+@media screen and (max-width: 667px) {
+  .search-input {
+    width: 60%;
+  }
+
+  .search-select {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .search-input {
+    width: 60%;
+  }
+
+  .search-select {
+    width: 30%;
+  }
+}

@@ -117,3 +117,20 @@ a {
     font-size: 15px;
   }
 }
+
+@media screen and (max-width: 667px) {
+  * {
+    font-size: 14px;
+  }
+
+  #root {
+    grid:
+      "header" 6.4rem
+      "main" calc(100vh - 6.4rem);
+  }
+
+  .modal {
+    align-items: flex-start;
+    padding: 6vh 0;
+  }
+}

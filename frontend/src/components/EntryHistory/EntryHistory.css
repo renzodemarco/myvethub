@@ -53,3 +53,17 @@
     -webkit-line-clamp: 3;
   }
 }
+
+@media screen and (max-width: 580px) {
+  .entry-history-card {
+    width: 8rem;
+    min-width: 8rem;
+    height: 5.6rem;
+    min-height: 5.6rem;
+    padding: .4rem;
+  }
+
+  .ellipsis {
+    -webkit-line-clamp: 3;
+  }
+}

@@ -9,6 +9,13 @@ aside {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: .8rem 8vw .6rem;
+    padding: .8rem 4vw .6rem;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  aside {
+    flex-direction: column;
+    padding: 1.2rem 8vw .6rem;
   }
 }

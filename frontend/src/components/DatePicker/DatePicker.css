@@ -29,8 +29,13 @@
     flex-direction: column;
     width: 14rem;
   }
+
   .current-age p {
     height: 1.4rem;
     margin: .4rem 0 0 0;
+  }
+
+  .date-picker {
+    font-size: 0.9rem;
   }
 }

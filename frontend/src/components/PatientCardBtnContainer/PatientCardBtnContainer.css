@@ -11,3 +11,9 @@
   height: 2.6rem;
   width: 10.4rem;
 }
+
+@media screen and (max-width: 580px) {
+  .card-button-container {
+    gap: 5vw;
+  }
+}
