@@ -1,6 +1,6 @@
 const getPatientById = async (id) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/patients/${id}`)
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`)
 
         if (response.ok) {
             const data = await response.json();

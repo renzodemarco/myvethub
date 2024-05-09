@@ -3,7 +3,7 @@ const putPatient = async (id, formData) => {
     const data = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== '')
     )
-    const response = await fetch(`http://localhost:8080/api/patients/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

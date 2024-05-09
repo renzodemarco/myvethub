@@ -1,6 +1,6 @@
 const getPatients = async () => {
     try {
-        const response = await fetch('http://localhost:8080/api/patients');
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients`);
         if (!response.ok) {
             throw new Error('Error al obtener los pacientes');
         }

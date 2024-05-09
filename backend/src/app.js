@@ -8,7 +8,7 @@ import notFoundHandler from './middlewares/not.found.handler.js'
 import env from './config/env.config.js'
 
 const app = express()
-const PORT = process.env.PORT || 8080
+const PORT = env.PORT || 8080
 
 const connection = async url => {
     await mongoose.connect(url)

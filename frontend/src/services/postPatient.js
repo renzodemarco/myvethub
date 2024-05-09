@@ -3,7 +3,7 @@ const postPatient = async (formData) => {
     const data = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== '')
     )
-    const response = await fetch('http://localhost:8080/api/patients', {
+    const response = await fetch((`${import.meta.env.VITE_BACKEND_URL}/api/patients`), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
