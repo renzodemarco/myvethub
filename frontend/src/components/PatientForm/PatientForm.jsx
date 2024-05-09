@@ -88,7 +88,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
           <label className="form-label">Propietario</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control form-text-input"
             maxLength="30"
             name="owner"
             autoComplete="off"

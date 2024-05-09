@@ -8,6 +8,8 @@ export default function getCurrentAge(date) {
 
     if (!daysDifference) return result
 
+    if (daysDifference > 10000) return result
+
     if (daysDifference < 59) {
         result = `${daysDifference} ${daysDifference === 1 ? 'día' : 'días'}`;
     } else if (daysDifference < 365) {

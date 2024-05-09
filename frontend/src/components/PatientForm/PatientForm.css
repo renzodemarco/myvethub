@@ -14,11 +14,11 @@
   margin-bottom: 0.2rem;
 }
 
-.new-patient-form input[type="text"] {
-  width: 14rem;
+.form-text-input {
+  width: 14em;
 }
 
-.new-patient-form input[type="select"] {
+.form-select {
   width: 8rem;
 }
 
@@ -35,4 +35,14 @@
   border: none;
   height: 2.6rem;
   width: 10.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .new-patient-form-container {
+    padding: 1rem 1rem 0;
+  }
+
+  .new-patient-btn-container {
+    padding: 1.6rem 0;
+  }
 }

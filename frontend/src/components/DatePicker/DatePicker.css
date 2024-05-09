@@ -1,25 +1,35 @@
 .date-picker-container {
-    margin: 1rem 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 18rem;
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 18rem;
 }
 
 .date-picker {
-    width: 10rem;
+  width: 10rem;
 }
 
 .current-age {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .current-age p {
-    margin-left: 1rem;
-    margin-bottom: .5rem;
-    font-size: .8rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .date-picker-container {
+    flex-direction: column;
+  }
+  .current-age p {
+    height: 1.4rem;
+    margin: .4rem 0 0 0;
+  }
 }
