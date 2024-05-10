@@ -16,4 +16,11 @@
   .card-button-container {
     gap: 5vw;
   }
+
+  .card-button-container button {
+    border: none;
+    height: 2.4rem;
+    width: 9.6rem;
+    font-size: .9rem;
+  }
 }

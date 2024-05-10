@@ -218,9 +218,17 @@ h4 {
 @media screen and (max-width: 580px) {
   .card {
     flex-direction: column;
-    min-height: 72vh;
+    min-height: 50vh;
     height: auto;
     max-height: 86vh;
+  }
+
+  .card-body {
+    padding-bottom: 0;
+  }
+
+  .no-entries {
+    min-height: 30vh;
   }
 
   .card-info-img {
@@ -239,11 +247,16 @@ h4 {
 
   .card-entries-container {
     width: 100%;
+    padding: 1rem;
     height: fit-content;
   }
 
   .card-entries-container::before {
     content: none;
     outline: none;
+  }
+
+  .no-entries .card-entries-container {
+    display: none;
   }
 }

@@ -3,6 +3,7 @@
   width: 90%;
   background-color: rgba(162, 109, 211, 0.15);
   padding: 16px;
+  min-height: 10rem;
   max-height: 18.75rem;
   border-radius: 20px;
 }
@@ -23,5 +24,11 @@
   .entry-form-container {
     padding: .8rem;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .entry-form-container {
+    height: 16rem;
   }
 }

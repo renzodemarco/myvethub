@@ -75,7 +75,7 @@ const PatientCard = ({ data, handleClose }) => {
   };
 
   return (
-    <div className="card">
+    <div className={`card ${data.history.length < 1 && 'no-entries'}`}>
       <div className='card-body'>
         <button type="button" className="btn-close" onClick={handleClose} />
         <div className="card-info-container">
