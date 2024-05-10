@@ -5,7 +5,7 @@
   align-items: stretch;
   height: 100%;
   width: 90%;
-  background-color: rgba(162, 109, 211, 0.2);
+  background-color: rgba(162, 109, 211, .15);
   padding: 1rem;
   border-radius: 20px;
 }

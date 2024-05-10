@@ -1,16 +1,20 @@
 .entry-history-card {
   width: 90%;
-  min-height: 6.8rem;
-  height: 6.8rem;
-  background-color: rgba(162, 109, 211, .9);
+  min-height: 7rem;
+  height: 7rem;
+  outline: solid rgba(162, 109, 211, .2) 1px;
+  box-shadow: 2px 2px 4px rgba(162, 109, 211, .4);
   border-radius: 12px;
-  padding: .5rem;
+  padding: .6rem;
   overflow: hidden;
 }
 
 .entry-history-card:hover {
   cursor: pointer;
-  background-color: rgba(162, 109, 211, 1);
+  background-color: rgba(162, 109, 211, .1);
+  transform: scale(1.03);
+  box-shadow: 2px 2px 4px rgba(162, 109, 211, .2);
+  transition: .1s;
 }
 
 .entry-history-card p {
@@ -43,10 +47,7 @@
     width: 90%;
     min-height: 5.8rem;
     height: 5.8rem;
-    background-color: rgba(162, 109, 211, .9);
-    border-radius: 12px;
     padding: .5rem;
-    overflow: hidden;
   }
 
   .ellipsis {

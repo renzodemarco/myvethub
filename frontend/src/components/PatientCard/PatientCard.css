@@ -98,8 +98,15 @@ h4 {
 .card-entries-container {
   width: 15rem;
   height: 100%;
-  padding: 0.87rem;
-  background-color: rgb(80, 38, 120);
+  padding: 1rem 0.9rem;
+}
+
+.card-entries-container::before {
+  content: "";
+  position: absolute;
+  top: .8rem;
+  bottom: .8rem;
+  outline: outset rgba(75, 21, 126, 0.1) 2px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -211,6 +218,9 @@ h4 {
 @media screen and (max-width: 580px) {
   .card {
     flex-direction: column;
+    min-height: 60vh;
+    height: auto;
+    max-height: 84vh;
   }
 
   .card-info-img {
@@ -224,10 +234,16 @@ h4 {
 
   .current-entry-container {
     max-height: 20rem;
+    margin: 1rem 0
   }
-  
+
   .card-entries-container {
     width: 100%;
     height: fit-content;
+  }
+
+  .card-entries-container::before {
+    content: none;
+    outline: none;
   }
 }

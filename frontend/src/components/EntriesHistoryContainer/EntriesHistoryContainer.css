@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem 0.4rem;
+  padding: 1rem 0.6rem;
   gap: 1rem;
   scrollbar-width: 6px
 }
