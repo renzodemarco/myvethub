@@ -218,9 +218,9 @@ h4 {
 @media screen and (max-width: 580px) {
   .card {
     flex-direction: column;
-    min-height: 60vh;
+    min-height: 72vh;
     height: auto;
-    max-height: 84vh;
+    max-height: 86vh;
   }
 
   .card-info-img {

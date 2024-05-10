@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 580px) {
   .entries-history-container {
-    height: 6.8rem;
+    height: 8rem;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
