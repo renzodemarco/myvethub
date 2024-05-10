@@ -10,6 +10,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  max-height: 100vh;
 }
 
 #root {
@@ -131,6 +132,6 @@ a {
 
   .modal {
     align-items: flex-start;
-    padding: 6vh 0;
+    padding: 6vh 0 0;
   }
 }
