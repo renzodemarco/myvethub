@@ -1,5 +1,6 @@
 import './PatientsList.css'
 import PatientItem from '../PatientItem/PatientItem'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 const PatientsList = ({ patients }) => {
 

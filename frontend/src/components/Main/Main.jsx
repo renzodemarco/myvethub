@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Aside from '../Aside/Aside'
+import PatientsList from '../PatientsList/PatientsList'
 import './Main.css'
 import { usePatientContext } from '../../context/PatientContext'
-import PatientsList from '../PatientsList/PatientsList'
 
 const Main = () => {
 
