@@ -9,14 +9,19 @@ const PatientContext = createContext()
 const PatientContextProvider = ({ children }) => {
 
   const [patients, setPatients] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       try {
         const data = await getPatients()
         setPatients(data.payload);
       } catch (error) {
-        console.error(error);
+        setError(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData()
@@ -71,7 +76,7 @@ const PatientContextProvider = ({ children }) => {
   }
 
   return (
-    <PatientContext.Provider value={{ patients, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory }}>
+    <PatientContext.Provider value={{ patients, isLoading, error, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory }}>
       {children}
     </PatientContext.Provider>
   );

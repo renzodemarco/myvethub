@@ -1,0 +1,13 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 20%;
+  box-sizing: border-box;
+}
+
+.spinner-border {
+  border-color: rgba(75, 21, 126, 0.820);
+  border-left-color: transparent
+}
