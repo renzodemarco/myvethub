@@ -1,12 +1,16 @@
-import { usePatientContext } from "../../context/PatientContext"
+import './ErrorMessage.css'
+import error from '../../assets/error.svg'
+import empty from '../../assets/empty.svg'
 
-const ErrorMessage = () => {
-
-  const { error } = usePatientContext()
+const ErrorMessage = (props) => {
 
   return (
     <div className="error-msg-container">
-      <p>ERROR</p>
+      <div className="error-msg">
+        {props.error && <img src={error} alt='error icon' />}
+        {props.empty && <img src={empty} alt='empty icon' />}
+        <p>{props.msg}</p>
+      </div>
     </div>
   )
 }

@@ -10,7 +10,9 @@ const PatientsList = ({ patients }) => {
 
   if (isLoading) return <LoadingSpinner />
 
-  if (error) return <ErrorMessage />
+  if (error) return <ErrorMessage msg='No se han podido obtener los pacientes.' error />
+
+  if (patients.length < 1) return <ErrorMessage msg='No hay pacientes en la lista.' empty />
 
   return (
     <ul className='patients-list'>
