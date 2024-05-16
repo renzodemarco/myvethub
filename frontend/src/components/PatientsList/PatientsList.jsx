@@ -12,7 +12,7 @@ const PatientsList = ({ patients }) => {
 
   if (error) return <ErrorMessage msg='No se han podido obtener los pacientes.' error />
 
-  if (patients.length < 1) return <ErrorMessage msg='No hay pacientes en la lista.' empty />
+  if (patients.length < 1) return <ErrorMessage msg='La lista de pacientes está vacía.' empty />
 
   return (
     <ul className='patients-list'>

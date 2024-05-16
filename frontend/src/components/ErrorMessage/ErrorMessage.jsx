@@ -1,6 +1,6 @@
 import './ErrorMessage.css'
 import error from '../../assets/error.svg'
-import empty from '../../assets/empty.svg'
+import warning from '../../assets/warning.svg'
 
 const ErrorMessage = (props) => {
 
@@ -8,7 +8,7 @@ const ErrorMessage = (props) => {
     <div className="error-msg-container">
       <div className="error-msg">
         {props.error && <img src={error} alt='error icon' />}
-        {props.empty && <img src={empty} alt='empty icon' />}
+        {props.empty && <img src={warning} alt='warning icon' />}
         <p>{props.msg}</p>
       </div>
     </div>
