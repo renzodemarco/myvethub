@@ -1,7 +1,7 @@
 .entry-history-card {
   width: 90%;
-  min-height: 7rem;
-  height: 7rem;
+  min-height: 6.8rem;
+  height: 6.8rem;
   outline: solid rgba(162, 109, 211, .2) 1px;
   box-shadow: 2px 2px 4px rgba(162, 109, 211, .4);
   border-radius: 12px;
@@ -18,11 +18,23 @@
 }
 
 .entry-history-card p {
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+}
+
+.entry-history-empty {
+  width: 90%;
+  margin-top: .4rem;
+  padding: .6rem;
+  text-align: center;
+}
+
+.entry-history-empty p {
+  font-size: .8rem;
+  opacity: .9;
 }
 
 .entry-history-date {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
 }
 

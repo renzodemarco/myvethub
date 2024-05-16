@@ -5,12 +5,13 @@ const EntriesHistoryContainer = ({ data, onSelect }) => {
 
   return (
     <div className="entries-history-container">
-      {data.map((entry, index) => {
-        return <EntryHistory
-          data={entry}
-          key={index}
-          onSelect={onSelect}
-        />
+      { data.length < 1 ? <EntryHistory empty/> :
+        data.map((entry, index) => {
+          return <EntryHistory
+            data={entry}
+            key={index}
+            onSelect={onSelect}
+          />
       })}
     </div>
   )
