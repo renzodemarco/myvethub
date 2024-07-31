@@ -5,10 +5,10 @@ import indexRouter from './routes/index.routes.js';
 import patientsRouter from './routes/patients.routes.js';
 import errorHandler from './middlewares/error.handler.js'
 import notFoundHandler from './middlewares/not.found.handler.js'
-import env from './config/env.config.js'
+import './config/env.config.js'
 
 const app = express()
-const PORT = env.PORT || 8080
+const PORT = process.env.PORT || 8080
 
 const connection = async url => {
     await mongoose.connect(url)
@@ -29,6 +29,6 @@ app.use(errorHandler)
 app.use(notFoundHandler)
 
 app.listen(PORT, () => {
-    connection(env.MONGO_URI).then(console.log('Connected to Mongo DB'))
+    connection(process.env.MONGO_URI).then(console.log('Connected to Mongo DB'))
     console.log(`Server running in PORT ${PORT}`);
 });

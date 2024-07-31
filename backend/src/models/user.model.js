@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-  username: {
+  user: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  email: {
     type: String,
     required: true,
     unique: true
@@ -10,12 +15,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
-  // Otros campos relevantes, como email, etc.
+  }
 });
 
 // Middleware para hashear la contraseña antes de guardarla
 userSchema.pre('save', async function (next) {
+  this.username = this.username.trim();
   if (!this.isModified('password')) {
     return next();
   }
@@ -28,6 +33,6 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-const UserModel = mongoose.model('User', userSchema);
+const UserModel = mongoose.model('user', userSchema);
 
 export default UserModel;

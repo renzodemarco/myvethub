@@ -1,32 +1,37 @@
-import mongoose from "mongoose";
+import { mongoose, Schema } from "mongoose";
 
 const patientsSchema = new mongoose.Schema({
-    name: {
-        required: true,
-        type: String
-    },
-    owner: {
-        required: true,
-        type: String
-    },
-    species: {
-        required: true,
-        type: String,
-        enum: ['canine', 'feline']
-    },
-    sex: {
-        type: String,
-        enum: ['male', 'female']
-    },
-    birthDate: String,
-    breed: String,
-    history: {
-        type:  [{
-            dateTime: String,
-            entry: String
-        }],
-        default: []
-    }
+  name: {
+    required: true,
+    type: String
+  },
+  owner: {
+    required: true,
+    type: String
+  },
+  species: {
+    required: true,
+    type: String,
+    enum: ['canine', 'feline']
+  },
+  user: {
+    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "user"
+  },
+  sex: {
+    type: String,
+    enum: ['male', 'female']
+  },
+  birthDate: String,
+  breed: String,
+  history: {
+    type: [{
+      dateTime: String,
+      entry: String
+    }],
+    default: []
+  }
 })
 
 const PatientModel = mongoose.model('patients', patientsSchema)
