@@ -24,9 +24,9 @@ app.use('/', indexRouter)
 
 app.use('/api/patients', patientsRouter)
 
-app.use(errorHandler)
-
 app.use(notFoundHandler)
+
+app.use(errorHandler)
 
 app.listen(PORT, () => {
     connection(process.env.MONGO_URI).then(console.log('Connected to Mongo DB'))
