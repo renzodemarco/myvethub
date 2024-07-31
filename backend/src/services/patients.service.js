@@ -1,48 +1,46 @@
-import PatientDAO from "../dao/patients.dao.js"
-
-const manager = new PatientDAO()
+import Patient from "../models/patients.model.js"
 
 export const getPatients = async () => {
-    try {
-        return await manager.read()
-    }
-    catch(error) {
-        throw error
-    }
+  try {
+    return await Patient.find()
+  }
+  catch (error) {
+    throw error
+  }
 }
 
 export const getPatientById = async (id) => {
-    try {
-        return await manager.readById(id)
-    }
-    catch(error) {
-        throw error
-    }
+  try {
+    return await Patient.findById()
+  }
+  catch (error) {
+    throw error
+  }
 }
 
 export const postPatient = async (data) => {
-    try {
-        return await manager.create(data)
-    }
-    catch(error) {
-        throw error
-    }
+  try {
+    return await Patient.create(data)
+  }
+  catch (error) {
+    throw error
+  }
 }
 
 export const putPatient = async (id, data) => {
-    try {
-        return await manager.update(id, data)
-    }
-    catch(error) {
-        throw error
-    }
+  try {
+    return await Patient.findByIdAndUpdate(id, data, { new: true })
+  }
+  catch (error) {
+    throw error
+  }
 }
 
 export const deletePatient = async (id) => {
-    try {
-        return await manager.destroy(id)
-    }
-    catch(error) {
-        throw error
-    }
+  try {
+    return await Patient.findByIdAndDelete(id)
+  }
+  catch (error) {
+    throw error
+  }
 }
