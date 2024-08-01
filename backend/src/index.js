@@ -6,6 +6,7 @@ import patientsRouter from './routes/patients.routes.js';
 import errorHandler from './middlewares/error.handler.js'
 import notFoundHandler from './middlewares/not.found.handler.js'
 import './config/env.config.js'
+import userRoutes from './routes/user.routes.js';
 
 const app = express()
 const PORT = process.env.PORT || 8080
@@ -21,8 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter)
-
 app.use('/api/patients', patientsRouter)
+app.use('/api/user', userRoutes)
 
 app.use(notFoundHandler)
 
