@@ -17,7 +17,7 @@ export const registerUser = async (data) => {
   }
 }
 
-export const loginUser = async (email, password, otpToken) => {
+export const loginUser = async (email, password) => {
   try {
     const user = await User.findOne({ email })
 
