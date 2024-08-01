@@ -4,7 +4,7 @@ import CustomError from '../utils/custom.error.js'
 
 export const GETPatients = async (req, res, next) => {
   try {
-    const userId = req.user._id
+    const userId = req.user
     const patients = await patientsServices.getPatients(userId)
     return res.status(200).json({ success: true, payload: patients })
   }
@@ -16,13 +16,14 @@ export const GETPatients = async (req, res, next) => {
 export const POSTPatient = async (req, res, next) => {
   try {
     const data = req.body
+    const userId = req.user
 
     const { error, value } = createPatientSchema.validate(data);
     if (error) return CustomError.new({ status: 400, message: error.details[0].message })
 
-    const patient = await patientsServices.postPatient(value)
+    const patient = await patientsServices.postPatient({ ...value, user: userId })
 
-    return res.status(200).json({ success: true, payload: patient })
+    return res.status(201).json({ success: true, payload: patient })
   }
   catch (error) {
     return next(error)
@@ -34,10 +35,10 @@ export const PUTPatient = async (req, res, next) => {
     const id = req.params.id
     const data = req.body
 
-    const { error, value } = createSchema.validate(data);
+    const { error, value } = updatePatientSchema.validate(data);
     if (error) return CustomError.new({ status: 400, message: error.details[0].message })
 
-    const patient = await updatePatientSchema.putPatient(id, value)
+    const patient = await patientsServices.putPatient(id, value)
     return res.status(200).json({ success: true, payload: patient })
   }
   catch (error) {

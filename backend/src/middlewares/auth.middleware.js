@@ -1,5 +1,6 @@
 import { verifyToken } from '../utils/jwt.js'
 import User from '../models/user.model.js'
+import Patient from '../models/patients.model.js';
 import CustomError from '../utils/custom.error.js';
 import dictionary from '../utils/error.dictionary.js';
 
@@ -13,7 +14,7 @@ export const injectUser = async (req, res, next) => {
   try {
     const data = verifyToken(token)
     const user = await User.findById(data.id)
-    req.user = user
+    req.user = user._id
   }
   catch (error) {
     req.user = null
@@ -30,3 +31,25 @@ export const requireAuth = (req, res, next) => {
     next(error)
   }
 };
+
+export const verifyPatient = async (req, res, next) => {
+  try {
+    const patientId = req.params.id
+    const userId = req.user
+
+    const patient = await Patient.findById(patientId);
+
+    if (!patient) {
+      return CustomError.new(dictionary.patientNotFound)
+    }
+
+    if (patient.user.toString() !== userId.toString()) {
+      return CustomError.new(dictionary.authorization)
+    }
+
+    next();
+  }
+  catch (error) {
+    next(error)
+  }
+}
