@@ -4,19 +4,9 @@ import CustomError from '../utils/custom.error.js'
 
 export const GETPatients = async (req, res, next) => {
   try {
-    const patients = await patientsServices.getPatients()
+    const userId = req.user._id
+    const patients = await patientsServices.getPatients(userId)
     return res.status(200).json({ success: true, payload: patients })
-  }
-  catch (error) {
-    return next(error)
-  }
-}
-
-export const GETPatientById = async (req, res, next) => {
-  try {
-    const id = req.params.id
-    const patient = await patientsServices.getPatientById(id)
-    return res.status(200).json({ success: true, payload: patient })
   }
   catch (error) {
     return next(error)

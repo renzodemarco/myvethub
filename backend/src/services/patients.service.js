@@ -1,17 +1,8 @@
 import Patient from "../models/patients.model.js"
 
-export const getPatients = async () => {
+export const getPatients = async (userId) => {
   try {
-    return await Patient.find()
-  }
-  catch (error) {
-    throw error
-  }
-}
-
-export const getPatientById = async (id) => {
-  try {
-    return await Patient.findById()
+    return await Patient.find({user: userId})
   }
   catch (error) {
     throw error

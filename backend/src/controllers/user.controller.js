@@ -1,6 +1,7 @@
 import { registerUserSchema } from '../schemas/user.schema.js';
 import { generateToken } from '../utils/jwt.js';
 import * as userServices from '../services/user.service.js'
+import CustomError from '../utils/custom.error.js';
 
 export const POSTRegisterUser = async (req, res, next) => {
   try {
@@ -27,7 +28,7 @@ export const POSTLoginUser = async (req, res, next) => {
 
     const user = await userServices.loginUser(value)
 
-    const token = generateToken({ username: user.username, email: user.email })
+    const token = generateToken({ username: user.username, email: user.email, id: user._id })
 
     return res.status(200).json({ success: true, payload: { user: user.username, token } })
   }

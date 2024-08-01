@@ -14,5 +14,15 @@ export const dictionary = {
   emailExists: {
     status: 400,
     message: "The email is already registered"
+  },
+  authentication: {
+    status: 401,
+    message: "Not authenticated"
+  },
+  authorization: {
+    status: 403,
+    message: "No authorizated"
   }
 }
+
+export default dictionary
