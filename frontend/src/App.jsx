@@ -1,14 +1,18 @@
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import { PatientContextProvider } from './context/PatientContext'
+import { useState, useEffect } from 'react';
+import { usePatientContext } from './context/PatientContext.jsx'
+import Home from './screens/Home'
+import Auth from './screens/Auth'
+import Header from './components/Header/Header.jsx';
 
 function App() {
 
+  const { auth } = usePatientContext()
+
   return (
-    <PatientContextProvider>
+    <>
       <Header />
-      <Main />
-    </PatientContextProvider>
+      {auth ? <Home /> : <Auth />}
+    </>
   )
 }
 

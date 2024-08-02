@@ -30,7 +30,7 @@ export const POSTLoginUser = async (req, res, next) => {
 
     const token = generateToken({ username: user.username, email: user.email, id: user._id })
 
-    return res.status(200).json({ success: true, payload: token})
+    return res.status(200).json({ success: true, token })
   }
   catch (error) {
     next(error)
