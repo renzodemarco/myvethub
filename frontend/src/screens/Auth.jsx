@@ -2,7 +2,7 @@ import { usePatientContext } from '../context/PatientContext.jsx'
 
 const Auth = () => {
 
-  const { loginUser, auth } = usePatientContext()
+  const { loginUser } = usePatientContext()
 
   const onClick = async () => {
     await loginUser({email: 'user@gmail.com', password: '12345678'})
@@ -11,7 +11,7 @@ const Auth = () => {
   return (
     <>
       <div>Choto</div>
-      <button onClick={onClick}>
+      <button className='btn btn-primary' onClick={onClick}>
         LOGEARSE
         </button>
     </>

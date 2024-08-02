@@ -61,7 +61,7 @@ const PatientContextProvider = ({ children }) => {
       const response = await postLoginUser(data)
       if (response.success === true) {
         localStorage.setItem('token', response.token)
-        console.log(response.token)
+        checkAuth()
       }
     } catch (error) {
       console.error(error);
