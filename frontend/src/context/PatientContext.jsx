@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getPatients, postPatient, putPatient, deletePatient } from '../services/patientsService.js'
 import getTokenInfo from '../utils/jwt.js';
 import { postRegisterUser, postLoginUser } from '../services/userService.js';
@@ -11,23 +11,11 @@ const PatientContextProvider = ({ children }) => {
   const [patients, setPatients] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null);
-
-  const checkAuth = () => {
-    setIsLoading(true)
-    const token = localStorage.getItem('token');
-    const data = getTokenInfo(token)
-    if (token && data) {
-      setAuth(data);
-    } else {
-      localStorage.removeItem('token');
-      setAuth(null);
-    }
-    setIsLoading(false);
-  };
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +23,7 @@ const PatientContextProvider = ({ children }) => {
 
       setIsLoading(true);
       try {
-        const data = await getPatients();
+        const data = await getPatients(token);
         setPatients(data.payload);
       } catch (error) {
         setError(error);
@@ -46,6 +34,19 @@ const PatientContextProvider = ({ children }) => {
 
     fetchData();
   }, [auth]);
+  
+
+  const checkAuth = () => {
+    setIsLoading(true)
+    const data = getTokenInfo(token)
+    if (token && data) {
+      setAuth(data);
+    } else {
+      localStorage.removeItem('token');
+      setAuth(null);
+    }
+    setIsLoading(false);
+  };
 
   const registerUser = async (data) => {
     try {
@@ -58,31 +59,32 @@ const PatientContextProvider = ({ children }) => {
 
   const loginUser = async (data) => {
     try {
-      const response = await postLoginUser(data)
+      const response = await postLoginUser(data);
       if (response.success === true) {
-        localStorage.setItem('token', response.token)
-        checkAuth()
+        localStorage.setItem('token', response.token);
+        setToken(response.token);
       }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
   
   const logoutUser = () => {
     localStorage.removeItem('token')
     setAuth(null);
+    setToken('')
   }
 
   const fetchPatients = async () => {
     try {
-      const newData = await getPatients()
+      const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const createPatient = async (data) => {
+  const createPatient = async (data, token) => {
     try {
       await postPatient(data)
       const newData = await getPatients()
@@ -92,7 +94,7 @@ const PatientContextProvider = ({ children }) => {
     }
   }
 
-  const updatePatient = async (id, data) => {
+  const updatePatient = async (id, data, token) => {
     try {
       await putPatient(id, data)
       const newData = await getPatients()
@@ -102,7 +104,7 @@ const PatientContextProvider = ({ children }) => {
     }
   }
 
-  const destroyPatient = async (id) => {
+  const destroyPatient = async (id, token) => {
     try {
       await deletePatient(id)
       const newData = await getPatients()
@@ -112,7 +114,7 @@ const PatientContextProvider = ({ children }) => {
     }
   }
 
-  const updateHistory = async (id, data) => {
+  const updateHistory = async (id, data, token) => {
     try {
       await updatePatient(id, { history: data })
     } catch (error) {

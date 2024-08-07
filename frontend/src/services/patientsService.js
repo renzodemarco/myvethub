@@ -1,76 +1,76 @@
-export const getPatients = async () => {
+import axios from 'axios'
+
+export const getPatients = async (token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients`);
-    if (!response.ok) {
-      throw new Error('Error al obtener los pacientes');
-    }
-    return await response.json();
-  } catch (error) {
-    throw error;
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/patients`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } 
+  catch (error) {
+    throw new Error('Error al obtener los pacientes');
   }
 };
 
-export const postPatient = async (formData) => {
+export const postPatient = async (formData, token) => {
   try {
     const data = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== '')
-    )
-    const response = await fetch((`${import.meta.env.VITE_BACKEND_URL}/api/patients`), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    } else {
-      throw new Error('Error al crear el paciente');
-    }
-  } catch (error) {
-    throw error;
+    );
+    const response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients`,
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    return response.data;
+  } 
+  catch (error) {
+    throw new Error('Error al crear el paciente');
   }
 };
 
-export const putPatient = async (id, formData) => {
+export const putPatient = async (id, formData, token) => {
   try {
     const data = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== '')
-    )
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    } else {
-      throw new Error('Error al actualizar el paciente');
-    }
-  } catch (error) {
-    throw error;
+    );
+    const response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`,
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    return response.data;
+  } 
+  catch (error) {
+    throw new Error('Error al actualizar el paciente');
   }
 };
 
-export const deletePatient = async (id) => {
+export const deletePatient = async (id, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`, {
-      method: 'DELETE'
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    } else {
-      throw new Error('Error al eliminar el paciente');
-    }
-  } catch (error) {
-    throw error;
+    const response = await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URL}/api/patients/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    return response.data;
+  } 
+  catch (error) {
+    throw new Error('Error al eliminar el paciente');
   }
 };

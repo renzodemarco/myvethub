@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { usePatientContext } from './context/PatientContext.jsx'
 import Home from './screens/Home'
 import Auth from './screens/Auth'

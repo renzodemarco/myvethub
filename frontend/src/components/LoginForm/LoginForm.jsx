@@ -5,7 +5,8 @@ const LoginForm = () => {
 
   const { loginUser } = usePatientContext()
 
-  const onClick = async () => {
+  const onClick = async (e) => {
+    e.preventDefault()
     await loginUser({ email: 'user@gmail.com', password: '12345678' })
   }
 
