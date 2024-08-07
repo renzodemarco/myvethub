@@ -87,7 +87,7 @@ const PatientContextProvider = ({ children }) => {
   const createPatient = async (data, token) => {
     try {
       await postPatient(data)
-      const newData = await getPatients()
+      const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
@@ -97,7 +97,7 @@ const PatientContextProvider = ({ children }) => {
   const updatePatient = async (id, data, token) => {
     try {
       await putPatient(id, data)
-      const newData = await getPatients()
+      const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
@@ -107,7 +107,7 @@ const PatientContextProvider = ({ children }) => {
   const destroyPatient = async (id, token) => {
     try {
       await deletePatient(id)
-      const newData = await getPatients()
+      const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
