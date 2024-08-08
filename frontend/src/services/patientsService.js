@@ -10,7 +10,7 @@ export const getPatients = async (token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error('Error al obtener los pacientes');
+    throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
   }
 };
 
@@ -32,7 +32,7 @@ export const postPatient = async (formData, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error(error.response.data.message);
+    throw new Error(`Error al crear el paciente: ${error.response.data.message}`);
   }
 };
 
@@ -54,7 +54,7 @@ export const putPatient = async (id, formData, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error('Error al actualizar el paciente');
+    throw new Error(`Error al actualizar el paciente: ${error.response.data.message}`);
   }
 };
 
@@ -71,6 +71,6 @@ export const deletePatient = async (id, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error('Error al eliminar el paciente');
+    throw new Error(`Error al eliminar el paciente: ${error.response.data.message}`);
   }
 };
