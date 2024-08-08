@@ -14,7 +14,7 @@ export const injectUser = async (req, res, next) => {
   try {
     const data = verifyToken(token)
     const user = await User.findById(data.id)
-    req.user = user._id
+    req.user = user._id.toString()
   }
   catch (error) {
     req.user = null

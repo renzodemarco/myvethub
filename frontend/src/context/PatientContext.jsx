@@ -84,37 +84,37 @@ const PatientContextProvider = ({ children }) => {
     }
   }
 
-  const createPatient = async (data, token) => {
+  const createPatient = async (data) => {
     try {
-      await postPatient(data)
-      const newData = await getPatients(token)
+      await postPatient(data, token)
+      const newData = await fetchPatients()
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const updatePatient = async (id, data, token) => {
+  const updatePatient = async (id, data) => {
     try {
-      await putPatient(id, data)
-      const newData = await getPatients(token)
+      await putPatient(id, data, token)
+      const newData = await fetchPatients()
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const destroyPatient = async (id, token) => {
+  const destroyPatient = async (id) => {
     try {
-      await deletePatient(id)
-      const newData = await getPatients(token)
+      await deletePatient(id, token)
+      const newData = await fetchPatients()
       setPatients(newData.payload);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const updateHistory = async (id, data, token) => {
+  const updateHistory = async (id, data) => {
     try {
       await updatePatient(id, { history: data })
     } catch (error) {

@@ -32,7 +32,7 @@ export const postPatient = async (formData, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error('Error al crear el paciente');
+    throw new Error(error.response.data.message);
   }
 };
 

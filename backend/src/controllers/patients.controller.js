@@ -18,10 +18,10 @@ export const POSTPatient = async (req, res, next) => {
     const data = req.body
     const userId = req.user
 
-    const { error, value } = createPatientSchema.validate(data);
+    const { error, value } = createPatientSchema.validate({...data, user: userId});
     if (error) return CustomError.new({ status: 400, message: error.details[0].message })
 
-    const patient = await patientsServices.postPatient({ ...value, user: userId })
+    const patient = await patientsServices.postPatient(value)
 
     return res.status(201).json({ success: true, payload: patient })
   }
