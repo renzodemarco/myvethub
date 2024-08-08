@@ -23,8 +23,14 @@ const patientsSchema = new mongoose.Schema({
     type: String,
     enum: ['male', 'female']
   },
-  birthDate: String,
-  breed: String,
+  birthDate: {
+    type: String,
+    required: false
+  },
+  breed: {
+    type: String,
+    required: false
+  },
   history: {
     type: [{
       dateTime: String,

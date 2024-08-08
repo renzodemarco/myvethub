@@ -36,6 +36,7 @@ const PatientCard = ({ data, handleClose }) => {
       dateTime: new Date().toLocaleDateString(),
       entry: entryValue
     }
+    console.log(data.history)
     data.history.push(newEntry)
     await updateHistory(data._id, data.history)
     setIsFormOpen(false)

@@ -30,16 +30,21 @@ export const createPatientSchema = Joi.object({
   breed: Joi.string().optional().messages({
     'string.base': 'Breed must be a string'
   }),
-  history: Joi.array().items(Joi.object({
-    dateTime: Joi.string().required().messages({
-      'string.base': 'DateTime must be a string',
-      'any.required': 'DateTime is required'
-    }),
-    entry: Joi.string().required().messages({
-      'string.base': 'Entry must be a string',
-      'any.required': 'Entry is required'
+  history: Joi.array().items(
+    Joi.object({
+      _id: Joi.string().optional().messages({
+        'string.base': 'ID must be a string'
+      }),
+      dateTime: Joi.string().required().messages({
+        'string.base': 'DateTime must be a string',
+        'any.required': 'DateTime is required'
+      }),
+      entry: Joi.string().required().messages({
+        'string.base': 'Entry must be a string',
+        'any.required': 'Entry is required'
+      })
     })
-  })).default([]).messages({
+  ).default([]).messages({
     'array.base': 'History must be an array of entries'
   })
 });
@@ -72,16 +77,21 @@ export const updatePatientSchema = Joi.object({
   breed: Joi.string().messages({
     'string.base': 'Breed must be a string'
   }),
-  history: Joi.array().items(Joi.object({
-    dateTime: Joi.string().messages({
-      'string.base': 'DateTime must be a string'
-    }),
-    entry: Joi.string().messages({
-      'string.base': 'Entry must be a string'
+  history: Joi.array().items(
+    Joi.object({
+      _id: Joi.string().optional().messages({
+        'string.base': 'ID must be a string'
+      }),
+      dateTime: Joi.string().required().messages({
+        'string.base': 'DateTime must be a string',
+        'any.required': 'DateTime is required'
+      }),
+      entry: Joi.string().required().messages({
+        'string.base': 'Entry must be a string',
+        'any.required': 'Entry is required'
+      })
     })
-  })).messages({
+  ).default([]).messages({
     'array.base': 'History must be an array of entries'
   })
-}).min(1).messages({
-  'object.min': 'At least one field must be provided'
 });
