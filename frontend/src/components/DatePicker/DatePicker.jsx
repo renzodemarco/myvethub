@@ -3,7 +3,7 @@ import getCurrentAge from '../../utils/getCurrentAge.js'
 import "./DatePicker.css";
 import getTodayFormatted from "../../utils/getTodayFormatted.js";
 
-const DatePicker = ({ initialValue, onChange }) => {
+const DatePicker = ({ initialValue, onChange, disabled }) => {
   const today = new Date()
   const minDate = new Date(today)
   minDate.setDate(today.getDate() - 10000);
@@ -46,6 +46,7 @@ const DatePicker = ({ initialValue, onChange }) => {
           value={startDate}
           onBlur={handleDateBlur}
           onChange={(event) => setStartDate(event.target.value)}
+          disabled={disabled}
         />
       </div>
       <div className="current-age">

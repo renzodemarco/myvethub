@@ -32,6 +32,15 @@ export const updatePatientAlert = () => {
   })
 }
 
+export const updatePatientError = () => {
+  Swal.fire({
+    ...template,
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+    title: 'Ocurrió un error en la modificación del paciente'
+  })
+}
+
 export const deletePatientConfirm = (patient) => {
   return Swal.fire({
     title: `¿Desea eliminar al paciente ${patient}?`,

@@ -53,7 +53,7 @@ const PatientContextProvider = ({ children }) => {
       const response = await postRegisterUser(data)
       if (response.success === true) alert("Usuario registrado exitosamente")
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -65,7 +65,7 @@ const PatientContextProvider = ({ children }) => {
         setToken(response.token);
       }
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   };
   
@@ -80,7 +80,7 @@ const PatientContextProvider = ({ children }) => {
       const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -89,7 +89,7 @@ const PatientContextProvider = ({ children }) => {
       await postPatient(data, token)
       await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -98,7 +98,7 @@ const PatientContextProvider = ({ children }) => {
       await putPatient(id, data, token)
       await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -107,7 +107,7 @@ const PatientContextProvider = ({ children }) => {
       await deletePatient(id, token)
       await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -115,7 +115,7 @@ const PatientContextProvider = ({ children }) => {
     try {
       await updatePatient(id, { history: data })
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
