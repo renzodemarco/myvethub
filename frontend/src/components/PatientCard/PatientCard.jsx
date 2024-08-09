@@ -36,7 +36,6 @@ const PatientCard = ({ data, handleClose }) => {
       dateTime: new Date().toLocaleDateString(),
       entry: entryValue
     }
-    console.log(data.history)
     data.history.push(newEntry)
     await updateHistory(data._id, data.history)
     setIsFormOpen(false)
@@ -60,7 +59,7 @@ const PatientCard = ({ data, handleClose }) => {
 
   const editEntry = async () => {
     const newEntry = {
-      dateTime: new Date().toLocaleDateString(),
+      dateTime: selectedEntry.dateTime,
       entry: entryValue
     }
     const index = data.history.findIndex(e => e._id === selectedEntry._id)

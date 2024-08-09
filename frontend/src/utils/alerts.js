@@ -16,6 +16,15 @@ export const createPatientAlert = () => {
   })
 }
 
+export const createPatientError = () => {
+  Swal.fire({
+    ...template,
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+    title: 'Ocurrió un error en la creación del paciente'
+  })
+}
+
 export const updatePatientAlert = () => {
   Swal.fire({
     ...template,
