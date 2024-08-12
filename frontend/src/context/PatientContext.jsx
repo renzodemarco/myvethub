@@ -1,68 +1,113 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import getPatients from '../services/getPatients'
-import postPatient from '../services/postPatient';
-import putPatient from '../services/putPatient';
-import deletePatient from '../services/deletePatient';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getPatients, postPatient, putPatient, deletePatient } from '../services/patientsService.js'
+import getTokenInfo from '../utils/jwt.js';
+import { postRegisterUser, postLoginUser } from '../services/userService.js';
 
 const PatientContext = createContext()
 
 const PatientContextProvider = ({ children }) => {
 
+  const [auth, setAuth] = useState(null)
   const [patients, setPatients] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
+
+  useEffect(() => {
+    checkAuth();
+  }, [token]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      if (!auth) return; // No hacer la llamada si no está autenticado
+
+      setIsLoading(true);
       try {
-        const data = await getPatients()
+        const data = await getPatients(token);
         setPatients(data.payload);
       } catch (error) {
         setError(error);
       } finally {
         setIsLoading(false);
       }
+    };
+
+    fetchData();
+  }, [auth]);
+  
+
+  const checkAuth = () => {
+    setIsLoading(true)
+    const data = getTokenInfo(token)
+    if (token && data) {
+      setAuth(data);
+    } else {
+      localStorage.removeItem('token');
+      setAuth(null);
     }
-    fetchData()
-  }, [])
+    setIsLoading(false);
+  };
+
+  const registerUser = async (data) => {
+    try {
+      const response = await postRegisterUser(data)
+      if (response.success === true) alert("Usuario registrado exitosamente")
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  const loginUser = async (data) => {
+    try {
+      const response = await postLoginUser(data);
+      if (response.success === true) {
+        localStorage.setItem('token', response.token);
+        setToken(response.token);
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  const logoutUser = () => {
+    localStorage.removeItem('token')
+    setAuth(null);
+    setToken('')
+  }
 
   const fetchPatients = async () => {
     try {
-      const newData = await getPatients()
+      const newData = await getPatients(token)
       setPatients(newData.payload);
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
   const createPatient = async (data) => {
     try {
-      await postPatient(data)
-      const newData = await getPatients()
-      setPatients(newData.payload);
+      await postPatient(data, token)
+      await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
   const updatePatient = async (id, data) => {
     try {
-      await putPatient(id, data)
-      const newData = await getPatients()
-      setPatients(newData.payload);
+      await putPatient(id, data, token)
+      await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
   const destroyPatient = async (id) => {
     try {
-      await deletePatient(id)
-      const newData = await getPatients()
-      setPatients(newData.payload);
+      await deletePatient(id, token)
+      await fetchPatients()
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }
 
@@ -70,13 +115,12 @@ const PatientContextProvider = ({ children }) => {
     try {
       await updatePatient(id, { history: data })
     } catch (error) {
-      d
-      console.error(error);
+      throw error;
     }
   }
 
   return (
-    <PatientContext.Provider value={{ patients, isLoading, error, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory }}>
+    <PatientContext.Provider value={{ auth, patients, isLoading, error, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory, registerUser, loginUser, logoutUser }}>
       {children}
     </PatientContext.Provider>
   );

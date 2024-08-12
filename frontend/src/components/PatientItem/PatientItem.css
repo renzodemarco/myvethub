@@ -66,3 +66,11 @@
 .btn-primary:hover {
     background-color: rgba(75, 21, 126, 0.921);
 }
+
+.btn-primary:disabled {
+    background-color: rgba(75, 21, 126, 0.761);
+}
+
+.btn-primary:not(:disabled):not(:disabled):active {
+    background-color: rgba(75, 21, 126, 0.961);
+} 

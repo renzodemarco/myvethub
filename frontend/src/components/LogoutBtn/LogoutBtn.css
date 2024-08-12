@@ -1,0 +1,18 @@
+.logout-btn {
+  position: absolute;
+  right: .4rem;
+  top: .8rem;
+  opacity: .4;
+  transition: ease .2s;
+  display: grid;
+  place-items: center;
+}
+
+.logout-btn:hover {
+  opacity: .95;
+  transform: scale(1.05);
+}
+
+.logout-btn img {
+  height: 2rem;
+}

@@ -1,7 +1,7 @@
 import EntryHistory from '../EntryHistory/EntryHistory'
 import './EntriesHistoryContainer.css'
 
-const EntriesHistoryContainer = ({ data, onSelect }) => {
+const EntriesHistoryContainer = ({ data, onSelect, isEditing }) => {
 
   return (
     <div className="entries-history-container">
@@ -11,6 +11,7 @@ const EntriesHistoryContainer = ({ data, onSelect }) => {
             data={entry}
             key={index}
             onSelect={onSelect}
+            isEditing={isEditing}
           />
       })}
     </div>

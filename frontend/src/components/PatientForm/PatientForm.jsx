@@ -2,11 +2,13 @@ import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
 import './PatientForm.css'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { createPatientAlert, incompleteFields, updatePatientAlert } from '../../utils/alerts.js'
+import { createPatientAlert, incompleteFields, updatePatientAlert, createPatientError, updatePatientError } from '../../utils/alerts.js'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
   const { updatePatient, createPatient } = usePatientContext()
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -53,6 +55,8 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
       if (editMode) {
         await updatePatient(patient._id, formData)
@@ -65,7 +69,10 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
       handleClose()
 
     } catch (error) {
-      console.error(error.message);
+      console.error(error)
+      editMode ? updatePatientError() : createPatientError()
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -82,6 +89,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             autoComplete="off"
             value={formData.name}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
         </div>
         <div className="mb-3">
@@ -94,6 +102,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             autoComplete="off"
             value={formData.owner}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
         </div>
         <div className="mb-3">
@@ -102,7 +111,8 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             className="form-select"
             name="species"
             value={formData.species}
-            onChange={handleChange}>
+            onChange={handleChange}
+            disabled={isSubmitting}>
             <option value=''></option>
             <option value='canine'>Canino</option>
             <option value='feline'>Felino</option>
@@ -114,7 +124,8 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             className="form-select"
             name="sex"
             value={formData.sex}
-            onChange={handleChange}>
+            onChange={handleChange}
+            disabled={isSubmitting}>
             <option value=''></option>
             <option value='male'>Macho</option>
             <option value='female'>Hembra</option>
@@ -129,15 +140,20 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
             autoComplete="off"
             value={formData.breed}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
         </div>
-        <DatePicker initialValue={formData.birthDate} onChange={handleBirthDateChange} />
+        <DatePicker
+          initialValue={formData.birthDate}
+          onChange={handleBirthDateChange}
+          disabled={isSubmitting}
+        />
       </div>
       <div className="new-patient-btn-container">
         {editMode ?
-          <button type="submit" className="btn btn-primary">GUARDAR</button> :
-          <button type="submit" className="btn btn-primary">AGREGAR</button>}
-        <button className="btn btn-danger" onClick={handleClose}>CANCELAR</button>
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>GUARDAR</button> :
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>AGREGAR</button>}
+        <button className="btn btn-danger" onClick={handleClose} disabled={isSubmitting}>CANCELAR</button>
       </div>
     </form>
   )
