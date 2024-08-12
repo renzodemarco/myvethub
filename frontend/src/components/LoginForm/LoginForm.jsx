@@ -17,6 +17,7 @@ const LoginForm = () => {
         <input
           type="email"
           className="form-control"
+          value="user@gmail.com"
           id="email"
           name="email"
           autoComplete="off"
@@ -26,6 +27,7 @@ const LoginForm = () => {
           type="password"
           className="form-control"
           id="password"
+          value="12345678"
           name="password"
           autoComplete="off"
         />
