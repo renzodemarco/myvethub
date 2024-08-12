@@ -66,6 +66,15 @@ export const deletePatientAlert = (patient) => {
   })
 }
 
+export const deletePatientError = (patient) => {
+  Swal.fire({
+    ...template,
+    title: 'Ocurrió un error en la eliminación del paciente ' + patient,
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}
+
 export const createVisitAlert = () => {
   Swal.fire({
     ...template,
@@ -73,6 +82,30 @@ export const createVisitAlert = () => {
   })
 }
 
+export const createVisitError = () => {
+  Swal.fire({
+    ...template,
+    title: 'Ocurrió un error en la creación de la visita',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}
+
+export const updateVisitAlert = () => {
+  Swal.fire({
+    ...template,
+    title: 'Visita modificada exitosamente'
+  })
+}
+
+export const updateVisitError = () => {
+  Swal.fire({
+    ...template,
+    title: 'Ocurrió un error en la modificación de la visita',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}
 
 export const deleteVisitConfirm = () => {
   return Swal.fire({
@@ -96,6 +129,15 @@ export const deleteVisitAlert = () => {
     title: 'Se ha eliminado la visita',
     icon: 'success',
     iconColor: 'rgba(220, 53, 69, .7)'
+  })
+}
+
+export const deleteVisitError = () => {
+  Swal.fire({
+    ...template,
+    title: 'Ocurrió un error en la eliminación de la visita',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
   })
 }
 

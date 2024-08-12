@@ -6,7 +6,10 @@ export const postLoginUser = async (data) => {
     return response.data;
   }
   catch (error) {
-    throw new Error(`Error al loggear al usuario: ${error.response.data.message}`);
+    if (error.response) {
+      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    } 
+    else serverError()
   }
 };
 
@@ -17,6 +20,9 @@ export const postRegisterUser = async (data) => {
     return response.data;
   }
   catch (error) {
-    throw new Error(`Error al registrar al usuario: ${error.response.data.message}`);
+    if (error.response) {
+      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    } 
+    else serverError()
   }
 };

@@ -5,19 +5,23 @@ import deleteImg from '../../assets/eliminar.svg'
 import canine from '../../assets/canino.svg'
 import feline from '../../assets/felino.svg'
 import EditPatientContainer from '../EditPatientContainer/EditPatientContainer.jsx'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx'
 import Modal from '../Modal/Modal.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { deletePatientAlert, deletePatientConfirm } from '../../utils/alerts.js'
+import { deletePatientAlert, deletePatientConfirm, deletePatientError } from '../../utils/alerts.js'
 import PatientCardContainer from '../PatientCardContainer/PatientCardContainer.jsx'
 
 const PatientItem = ({ data }) => {
 
   const speciesImg = data.species == 'canine' ? canine : feline
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const { destroyPatient } = usePatientContext()
 
   const handleDelete = async () => {
+    setIsSubmitting(true)
     try {
       const confirmed = await deletePatientConfirm(data.name);
       if (confirmed) {
@@ -26,6 +30,9 @@ const PatientItem = ({ data }) => {
       }
     } catch (error) {
       console.error(error.message);
+      deletePatientError(data.name)
+    } finally {
+      setIsSubmitting(false)
     }
   };
 
@@ -65,6 +72,9 @@ const PatientItem = ({ data }) => {
       </Modal>
       <Modal isOpen={isModalOpen}>
         <PatientCardContainer data={data} handleClose={handleCloseModal} />
+      </Modal>
+      <Modal isOpen={isSubmitting}>
+        <LoadingSpinner />
       </Modal>
     </>
   )

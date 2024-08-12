@@ -5,7 +5,7 @@ import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
 import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnContainer'
 import { usePatientContext } from '../../context/PatientContext'
-import { createVisitAlert, deleteVisitAlert, deleteVisitConfirm } from '../../utils/alerts'
+import { createVisitAlert, createVisitError, deleteVisitAlert, deleteVisitConfirm, deleteVisitError, updateVisitAlert, updateVisitError } from '../../utils/alerts'
 
 const PatientCard = ({ data, handleClose }) => {
 
@@ -14,6 +14,8 @@ const PatientCard = ({ data, handleClose }) => {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [selectedEntry, setSelectedEntry] = useState({})
   const [entryValue, setEntryValue] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSelectEntry = (e) => {
     setSelectedEntry(e)
@@ -28,6 +30,7 @@ const PatientCard = ({ data, handleClose }) => {
   }
 
   const handleCancel = () => {
+    setIsEditing(false)
     setIsFormOpen(false)
   }
 
@@ -36,13 +39,25 @@ const PatientCard = ({ data, handleClose }) => {
       dateTime: new Date().toLocaleDateString(),
       entry: entryValue
     }
-    data.history.push(newEntry)
-    await updateHistory(data._id, data.history)
-    setIsFormOpen(false)
-    createVisitAlert()
+    setIsSubmitting(true)
+    try {
+      const newData = [...data.history, newEntry]
+      await updateHistory(data._id, newData)
+      createVisitAlert()
+    }
+    catch (error) {
+      console.error(error)
+      createVisitError()
+    }
+    finally {
+      setIsFormOpen(false)
+      setIsEditing(false)
+      setIsSubmitting(false)
+    }
   }
 
   const deleteEntry = async () => {
+    setIsSubmitting(true)
     try {
       const confirmed = await deleteVisitConfirm();
       if (confirmed) {
@@ -51,10 +66,14 @@ const PatientCard = ({ data, handleClose }) => {
         setSelectedEntry({})
         deleteVisitAlert()
       }
-    } catch (error) {
-      console.error(error.message);
     }
-
+    catch (error) {
+      console.error(error)
+      deleteVisitError()
+    }
+    finally {
+      setIsSubmitting(false)
+    }
   }
 
   const editEntry = async () => {
@@ -62,16 +81,32 @@ const PatientCard = ({ data, handleClose }) => {
       dateTime: selectedEntry.dateTime,
       entry: entryValue
     }
-    const index = data.history.findIndex(e => e._id === selectedEntry._id)
-    if (index !== -1) data.history[index] = newEntry;
-    else console.log('No se ha encontrado la visita en el historial del paciente');
-    await updateHistory(data._id, data.history)
-    setIsFormOpen(false)
-    setSelectedEntry(newEntry)
+    setIsSubmitting(true)
+
+    const updatedHistory = [...data.history];
+    const index = updatedHistory.findIndex(e => e._id === selectedEntry._id);
+    if (index !== -1) {
+      updatedHistory[index] = newEntry;
+    }
+    try {
+      await updateHistory(data._id, updatedHistory)
+      setIsFormOpen(false)
+      setIsEditing(false)
+      updateVisitAlert()
+      setSelectedEntry(newEntry)
+    }
+    catch (error) {
+      console.error(error)
+      updateVisitError()
+    }
+    finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleEntryChange = (event) => {
     setEntryValue(event.target.value);
+    setIsEditing(true)
   };
 
   return (
@@ -119,10 +154,15 @@ const PatientCard = ({ data, handleClose }) => {
           handleNewEntry={handleNewEntry}
           editMode={isFormOpen}
           handleSave={selectedEntry.entry ? editEntry : createEntry}
+          isSubmitting={isSubmitting}
         />
       </div>
       <div className="card-entries-container">
-        <EntriesHistoryContainer data={data.history} onSelect={handleSelectEntry} />
+        <EntriesHistoryContainer
+          data={data.history}
+          onSelect={handleSelectEntry}
+          isEditing={isEditing}
+        />
       </div>
     </div >
   )

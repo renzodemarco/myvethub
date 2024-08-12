@@ -1,4 +1,5 @@
 import axios from 'axios'
+import serverError from './serverError';
 
 export const getPatients = async (token) => {
   try {
@@ -10,7 +11,10 @@ export const getPatients = async (token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    if (error.response) {
+      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    } 
+    else serverError()
   }
 };
 
@@ -32,7 +36,10 @@ export const postPatient = async (formData, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error(`Error al crear el paciente: ${error.response.data.message}`);
+    if (error.response) {
+      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    } 
+    else serverError()
   }
 };
 
@@ -54,7 +61,10 @@ export const putPatient = async (id, formData, token) => {
     return response.data;
   } 
   catch (error) {
-    throw new Error(`Error al actualizar el paciente: ${error.response.data.message}`);
+    if (error.response) {
+      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+    } 
+    else serverError()
   }
 };
 
