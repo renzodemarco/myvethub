@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { getPatients, postPatient, putPatient, deletePatient } from '../services/patientsService.js'
 import getTokenInfo from '../utils/jwt.js';
 import { postRegisterUser, postLoginUser } from '../services/userService.js';
+import { wakingServerAlert } from '../utils/alerts.js';
 
 const PatientContext = createContext()
 
@@ -12,11 +13,14 @@ const PatientContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || '');
+  const [wakingServer, setWakingServer] = useState(false)
 
+  // Chequear credenciales
   useEffect(() => {
     checkAuth();
   }, [token]);
 
+  // Leer pacientes de la db
   useEffect(() => {
     const fetchData = async () => {
       if (!auth) return; // No hacer la llamada si no está autenticado
@@ -34,6 +38,31 @@ const PatientContextProvider = ({ children }) => {
 
     fetchData();
   }, [auth]);
+
+  // Mostrar mensaje de servidor despertando
+  useEffect(() => {
+    let timer;
+    let interval;
+
+    if (isLoading) {
+      timer = setTimeout(() => {
+        setWakingServer(true);
+        wakingServerAlert();
+        interval = setInterval(() => {
+          wakingServerAlert();
+        }, 5000);
+      }, 5000);
+    } else {
+      setWakingServer(false);
+      clearTimeout(timer);
+      clearInterval(interval); 
+    }
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, [isLoading]);
 
 
   const checkAuth = () => {
@@ -59,6 +88,7 @@ const PatientContextProvider = ({ children }) => {
 
   const loginUser = async (data) => {
     try {
+      setIsLoading(true)
       const response = await postLoginUser(data);
       if (response.error) {
         throw response;
@@ -69,6 +99,8 @@ const PatientContextProvider = ({ children }) => {
       }
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -123,7 +155,7 @@ const PatientContextProvider = ({ children }) => {
   }
 
   return (
-    <PatientContext.Provider value={{ auth, patients, isLoading, error, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory, registerUser, loginUser, logoutUser }}>
+    <PatientContext.Provider value={{ auth, patients, isLoading, error, wakingServer, fetchPatients, createPatient, updatePatient, destroyPatient, updateHistory, registerUser, loginUser, logoutUser }}>
       {children}
     </PatientContext.Provider>
   );

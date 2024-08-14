@@ -1,34 +1,16 @@
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext'
-import { loginUser404Error, loginUserFieldsError, serverError } from '../../utils/alerts'
-import './LoginForm.css'
+import Modal from '../Modal/Modal'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
+import './RegisterForm.css'
 
-const LoginForm = ({ handleSwitch }) => {
+const RegisterForm = ({ handleSwitch }) => {
 
-  const { loginUser } = usePatientContext()
+  const { registerUser } = usePatientContext()
 
   const [email, setEmail] = useState('user@gmail.com')
   const [password, setPassword] = useState('12345678')
-
-  const onClick = async (e) => {
-    e.preventDefault()
-    try {
-      await loginUser({ email, password })
-    }
-    catch (error) {
-      switch (error.status) {
-        case 400:
-          loginUserFieldsError()
-          break
-        case 404:
-          loginUser404Error()
-          break
-        default:
-          console.error(error.message || 'Ocurrió un error inesperado')
-          serverError()
-      }
-    }
-  }
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <>
@@ -56,12 +38,15 @@ const LoginForm = ({ handleSwitch }) => {
           />
         </div>
         <div className='auth-btn-container'>
-          <button className='btn btn-primary' onClick={onClick}>INICIAR SESIÓN</button>
-          <button className='btn btn-secondary' onClick={handleSwitch}>REGISTRARME</button>
+          <button className='btn btn-primary'>CREAR USUARIO</button>
+          <button className='btn btn-secondary' onClick={handleSwitch}>YA ESTOY REGISTRADO</button>
         </div>
       </form>
+      <Modal isOpen={isLoading}>
+        <LoadingSpinner light />
+      </Modal>
     </>
   )
 }
 
-export default LoginForm
+export default RegisterForm

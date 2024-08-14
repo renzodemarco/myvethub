@@ -184,6 +184,14 @@ export const logoutConfirm = async () => {
   });
 }
 
+export const wakingServerAlert = () => {
+  Swal.fire({
+    ...template,
+    title: 'Despertando servidor, esto puede tardar unos minutos...',
+    icon: 'warning',
+    timer: 4000
+  })
+}
 
 export const serverError = () => {
   Swal.fire({
