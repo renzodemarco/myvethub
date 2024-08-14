@@ -1,0 +1,20 @@
+.register-form-container {
+  display: grid;
+  grid-template-columns: 12rem 20rem;
+  gap: .6rem;
+  padding: 0 3rem;
+}
+
+.register-form-container label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: end;
+}
+
+.register-btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

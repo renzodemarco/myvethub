@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 28rem;
-  width: 32rem;
   background-color: rgb(204, 197, 214);
 }
 

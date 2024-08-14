@@ -32,7 +32,7 @@ const LoginForm = ({ handleSwitch }) => {
 
   return (
     <>
-      <form className='login-form'>
+      <form className='auth-form'>
         <div className='login-form-container'>
           <label className="auth-form-label" htmlFor='email'>Correo electrónico</label>
           <input
