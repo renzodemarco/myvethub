@@ -149,3 +149,30 @@ export const incompleteFields = () => {
     iconColor: 'rgba(220, 53, 69, .7)'
   })
 }
+
+export const loginUserFieldsError = () => {
+  Swal.fire({
+    ...template,
+    title: 'Correo electrónico o contraseña inválidas',
+    icon: 'warning',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}
+
+export const loginUser404Error = () => {
+  Swal.fire({
+    ...template,
+    title: 'No se ha encontrado el usuario',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}
+
+export const serverError = () => {
+  Swal.fire({
+    ...template,
+    title: 'Ocurrió un error inesperado, por favor intente de nuevo más tarde',
+    icon: 'error',
+    iconColor: 'rgba(220, 53, 69, .7)',
+  })
+}

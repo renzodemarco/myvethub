@@ -1,4 +1,5 @@
 import axios from 'axios';
+import serverError from './serverError';
 
 export const postLoginUser = async (data) => {
   try {
@@ -7,9 +8,10 @@ export const postLoginUser = async (data) => {
   }
   catch (error) {
     if (error.response) {
-      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
-    } 
-    else serverError()
+      return { error: true, ...error.response };
+    } else {
+      return serverError();
+    }
   }
 };
 
@@ -22,7 +24,7 @@ export const postRegisterUser = async (data) => {
   catch (error) {
     if (error.response) {
       throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
-    } 
+    }
     else serverError()
   }
 };

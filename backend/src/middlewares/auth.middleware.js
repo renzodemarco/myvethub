@@ -32,6 +32,23 @@ export const requireAuth = (req, res, next) => {
   }
 };
 
+export const userExists = async (req, res, next) => {
+  try {
+    const { email } = req.body
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return CustomError.new(dictionary.userNotFound)
+    }
+
+    next()
+  }
+  catch (error) {
+    next(error)
+  }
+}
+
 export const verifyPatient = async (req, res, next) => {
   try {
     const patientId = req.params.id

@@ -21,10 +21,6 @@ export const loginUser = async ({ email, password }) => {
   try {
     const user = await User.findOne({ email })
 
-    if (!user) {
-      return CustomError.new(dictionary.userNotFound)
-    }
-
     const isMatch = await user.comparePassword(password, user.password)
 
     if (!isMatch) {

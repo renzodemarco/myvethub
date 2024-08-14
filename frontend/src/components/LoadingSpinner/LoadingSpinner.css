@@ -8,6 +8,11 @@
 }
 
 .spinner-border {
-  border-color: rgba(75, 21, 126, 0.820);
-  border-left-color: transparent
+  border-color: rgba(75, 21, 126, 0.82);
+  border-left-color: transparent;
+}
+
+.light-spinner {
+  border-color: rgba(218, 212, 224, 0.92);
+  border-left-color: transparent;
 }

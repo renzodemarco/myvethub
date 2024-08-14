@@ -34,7 +34,7 @@ const PatientContextProvider = ({ children }) => {
 
     fetchData();
   }, [auth]);
-  
+
 
   const checkAuth = () => {
     setIsLoading(true)
@@ -60,7 +60,10 @@ const PatientContextProvider = ({ children }) => {
   const loginUser = async (data) => {
     try {
       const response = await postLoginUser(data);
-      if (response.success === true) {
+      if (response.error) {
+        throw response;
+      }
+      if (response.success) {
         localStorage.setItem('token', response.token);
         setToken(response.token);
       }
@@ -68,7 +71,7 @@ const PatientContextProvider = ({ children }) => {
       throw error;
     }
   };
-  
+
   const logoutUser = () => {
     localStorage.removeItem('token')
     setAuth(null);
