@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getPatients, postPatient, putPatient, deletePatient } from '../services/patientsService.js'
 import getTokenInfo from '../utils/jwt.js';
@@ -50,12 +51,13 @@ const PatientContextProvider = ({ children }) => {
         wakingServerAlert();
         interval = setInterval(() => {
           wakingServerAlert();
-        }, 5000);
-      }, 5000);
+        }, 10000);
+      }, 3000);
     } else {
       setWakingServer(false);
       clearTimeout(timer);
       clearInterval(interval); 
+      Swal.close()
     }
 
     return () => {
