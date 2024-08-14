@@ -41,7 +41,7 @@ export const updatePatientError = () => {
   })
 }
 
-export const deletePatientConfirm = (patient) => {
+export const deletePatientConfirm = async (patient) => {
   return Swal.fire({
     title: `¿Desea eliminar al paciente ${patient}?`,
     icon: 'warning',
@@ -49,7 +49,7 @@ export const deletePatientConfirm = (patient) => {
     showConfirmButton: true,
     showCancelButton: true,
     confirmButtonColor: 'rgba(220, 53, 69, .8)',
-    cancelButtonColor: 'rgba(200, 200, 200)',
+    cancelButtonColor: 'rgba(160, 160, 160)',
     confirmButtonText: 'Eliminar',
     cancelButtonText: 'Cancelar'
   }).then((result) => {
@@ -107,7 +107,7 @@ export const updateVisitError = () => {
   })
 }
 
-export const deleteVisitConfirm = () => {
+export const deleteVisitConfirm = async () => {
   return Swal.fire({
     title: `¿Desea eliminar la visita?`,
     icon: 'warning',
@@ -115,7 +115,7 @@ export const deleteVisitConfirm = () => {
     showConfirmButton: true,
     showCancelButton: true,
     confirmButtonColor: 'rgba(220, 53, 69, .8)',
-    cancelButtonColor: 'rgba(200, 200, 200)',
+    cancelButtonColor: 'rgba(160, 160, 160)',
     confirmButtonText: 'Eliminar',
     cancelButtonText: 'Cancelar'
   }).then((result) => {
@@ -167,6 +167,23 @@ export const loginUser404Error = () => {
     iconColor: 'rgba(220, 53, 69, .7)',
   })
 }
+
+export const logoutConfirm = async () => {
+  return Swal.fire({
+    title: `¿Desea cerrar sesión?`,
+    icon: 'warning',
+    iconColor: 'rgba(220, 53, 69, .7)',
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonColor: 'rgba(220, 53, 69, .8)',
+    cancelButtonColor: 'rgba(160, 160, 160)',
+    confirmButtonText: 'Cerrar sesión',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    return result.isConfirmed;
+  });
+}
+
 
 export const serverError = () => {
   Swal.fire({
