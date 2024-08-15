@@ -91,7 +91,7 @@ export const updatePatientSchema = Joi.object({
         'any.required': 'Entry is required'
       })
     })
-  ).default([]).messages({
+  ).messages({
     'array.base': 'History must be an array of entries'
   })
 });
