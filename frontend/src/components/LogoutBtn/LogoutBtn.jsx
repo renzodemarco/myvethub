@@ -1,7 +1,7 @@
 import { usePatientContext } from '../../context/PatientContext'
 import logout from '../../assets/logout.svg'
 import './LogoutBtn.css'
-import { logoutConfirm } from '../../utils/alerts'
+import { logoutConfirm } from '../../utils/confirms'
 
 const LogoutBtn = () => {
 

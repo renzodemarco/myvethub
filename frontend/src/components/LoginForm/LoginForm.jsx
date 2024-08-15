@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext'
-import { loginUser404Error, loginUserFieldsError, serverError } from '../../utils/alerts'
+import { errorAlert, serverError, warningAlert } from '../../utils/alerts'
 import './LoginForm.css'
 
 const LoginForm = ({ handleSwitch }) => {
@@ -10,7 +10,7 @@ const LoginForm = ({ handleSwitch }) => {
   const [email, setEmail] = useState('user@gmail.com')
   const [password, setPassword] = useState('12345678')
 
-  const onClick = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     try {
       await loginUser({ email, password })
@@ -18,10 +18,10 @@ const LoginForm = ({ handleSwitch }) => {
     catch (error) {
       switch (error.status) {
         case 400:
-          loginUserFieldsError()
+          warningAlert('Correo electrónico o contraseña inválidas')
           break
         case 404:
-          loginUser404Error()
+          errorAlert('No se ha encontrado el usuario')
           break
         default:
           console.error(error.message || 'Ocurrió un error inesperado')
@@ -56,7 +56,7 @@ const LoginForm = ({ handleSwitch }) => {
           />
         </div>
         <div className='auth-btn-container'>
-          <button className='btn btn-primary' onClick={onClick}>INICIAR SESIÓN</button>
+          <button className='btn btn-primary' onClick={onSubmit}>INICIAR SESIÓN</button>
           <button className='btn btn-secondary' onClick={handleSwitch}>REGISTRARME</button>
         </div>
       </form>

@@ -5,7 +5,8 @@ import EntryForm from '../EntryForm/EntryForm'
 import './PatientCard.css'
 import PatientCardBtnContainer from '../PatientCardBtnContainer/PatientCardBtnContainer'
 import { usePatientContext } from '../../context/PatientContext'
-import { createVisitAlert, createVisitError, deleteVisitAlert, deleteVisitConfirm, deleteVisitError, updateVisitAlert, updateVisitError } from '../../utils/alerts'
+import { deleteAlert, errorAlert, successAlert } from '../../utils/alerts'
+import { deleteVisitConfirm } from '../../utils/confirms'
 
 const PatientCard = ({ data, handleClose }) => {
 
@@ -43,11 +44,11 @@ const PatientCard = ({ data, handleClose }) => {
     try {
       const newData = [...data.history, newEntry]
       await updateHistory(data._id, newData)
-      createVisitAlert()
+      successAlert('Visita registrada exitosamente')
     }
     catch (error) {
       console.error(error)
-      createVisitError()
+      errorAlert('Ocurrió un error en la creación de la visita')
     }
     finally {
       setIsFormOpen(false)
@@ -64,12 +65,12 @@ const PatientCard = ({ data, handleClose }) => {
         const newData = data.history.filter(entry => entry._id !== selectedEntry._id)
         await updateHistory(data._id, newData)
         setSelectedEntry({})
-        deleteVisitAlert()
+        deleteAlert('Se ha eliminado la visita')
       }
     }
     catch (error) {
       console.error(error)
-      deleteVisitError()
+      errorAlert('Ocurrió un error al eliminar la visita')
     }
     finally {
       setIsSubmitting(false)
@@ -92,12 +93,12 @@ const PatientCard = ({ data, handleClose }) => {
       await updateHistory(data._id, updatedHistory)
       setIsFormOpen(false)
       setIsEditing(false)
-      updateVisitAlert()
+      successAlert('Visita modificada exitosamente')
       setSelectedEntry(newEntry)
     }
     catch (error) {
       console.error(error)
-      updateVisitError()
+      errorAlert('Ocurrió un error al modificar la visita')
     }
     finally {
       setIsSubmitting(false)

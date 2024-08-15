@@ -2,7 +2,7 @@ import DatePicker from '../DatePicker/DatePicker.jsx'
 import { useState, useEffect } from 'react'
 import './PatientForm.css'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { createPatientAlert, incompleteFields, updatePatientAlert, createPatientError, updatePatientError } from '../../utils/alerts.js'
+import { successAlert, errorAlert } from '../../utils/alerts.js'
 
 const NewPatientForm = ({ editMode, patient, handleClose }) => {
 
@@ -51,7 +51,7 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
     e.preventDefault();
 
     if (!formData.name || !formData.owner || !formData.species) {
-      incompleteFields()
+      errorAlert('Complete los campos obligatorios')
       return;
     }
 
@@ -60,17 +60,18 @@ const NewPatientForm = ({ editMode, patient, handleClose }) => {
     try {
       if (editMode) {
         await updatePatient(patient._id, formData)
-        updatePatientAlert();
+        successAlert('Paciente modificado exitosamente');
       }
       else {
         await createPatient(formData);
-        createPatientAlert();
+        successAlert('Paciente creado exitosamente');
       }
       handleClose()
 
     } catch (error) {
       console.error(error)
-      editMode ? updatePatientError() : createPatientError()
+      const msg = `Ocurrió un error en la ${editMode? 'modificación' : 'creación'} del paciente`
+      errorAlert(msg)
     } finally {
       setIsSubmitting(false);
     }

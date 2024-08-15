@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext'
+import { serverError, warningAlert } from '../../utils/alerts'
 import './RegisterForm.css'
 
 const RegisterForm = ({ handleSwitch }) => {
@@ -10,6 +11,22 @@ const RegisterForm = ({ handleSwitch }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConf, setPasswordConf] = useState('')
+
+  const submitActive = username && email && password && passwordConf;
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    if (password !== passwordConf) return warningAlert('Las contraseñas no coinciden')
+
+    try {
+      await registerUser({ username, email, password })
+    }
+    catch (error) {
+      serverError()
+    }
+  }
+
 
   return (
     <>
@@ -57,12 +74,13 @@ const RegisterForm = ({ handleSwitch }) => {
           />
         </div>
         <div className='register-btn-container'>
-          <button className='btn btn-primary'>CREAR USUARIO</button>
+          <button className='btn btn-primary' onClick={onSubmit} disabled={!submitActive}>CREAR USUARIO</button>
           <button className='btn btn-secondary' onClick={handleSwitch}>YA ESTOY REGISTRADO</button>
         </div>
       </form>
     </>
   )
 }
+
 
 export default RegisterForm

@@ -7,10 +7,11 @@ import feline from '../../assets/felino.svg'
 import EditPatientContainer from '../EditPatientContainer/EditPatientContainer.jsx'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx'
 import Modal from '../Modal/Modal.jsx'
+import PatientCardContainer from '../PatientCardContainer/PatientCardContainer.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { deletePatientAlert, deletePatientConfirm, deletePatientError } from '../../utils/alerts.js'
-import PatientCardContainer from '../PatientCardContainer/PatientCardContainer.jsx'
+import { errorAlert } from '../../utils/alerts.js'
+import { deletePatientConfirm } from '../../utils/confirms.js'
 
 const PatientItem = ({ data }) => {
 
@@ -26,11 +27,11 @@ const PatientItem = ({ data }) => {
       const confirmed = await deletePatientConfirm(data.name);
       if (confirmed) {
         await destroyPatient(data._id);
-        deletePatientAlert(data.name);
+        deleteAlert('Se ha eliminado al paciente ' + data.name);
       }
     } catch (error) {
       console.error(error.message);
-      deletePatientError(data.name)
+      errorAlert('Ocurrió un error en la eliminación del paciente ' + data.name)
     } finally {
       setIsSubmitting(false)
     }
@@ -66,7 +67,7 @@ const PatientItem = ({ data }) => {
         <button className="btn btn-danger list-item-btn" title="Eliminar paciente" onClick={handleDelete}>
           <img src={deleteImg}></img>
         </button>
-      </li> 
+      </li>
       <Modal isOpen={isEditModalOpen}>
         <EditPatientContainer data={data} handleClose={handleEditCloseModal} />
       </Modal>

@@ -9,179 +9,37 @@ const template = {
   icon: 'success'
 }
 
-export const createPatientAlert = () => {
+export const successAlert = (title) => {
   Swal.fire({
     ...template,
-    title: `Paciente creado exitosamente`
+    title
   })
 }
 
-export const createPatientError = () => {
+export const errorAlert = (title) => {
   Swal.fire({
     ...template,
     icon: 'error',
     iconColor: 'rgba(220, 53, 69, .7)',
-    title: 'Ocurrió un error en la creación del paciente'
+    title
   })
 }
 
-export const updatePatientAlert = () => {
+export const deleteAlert = (title) => {
   Swal.fire({
     ...template,
-    title: 'Paciente modificado exitosamente'
-  })
-}
-
-export const updatePatientError = () => {
-  Swal.fire({
-    ...template,
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
-    title: 'Ocurrió un error en la modificación del paciente'
-  })
-}
-
-export const deletePatientConfirm = async (patient) => {
-  return Swal.fire({
-    title: `¿Desea eliminar al paciente ${patient}?`,
-    icon: 'warning',
-    iconColor: 'rgba(220, 53, 69, .7)',
-    showConfirmButton: true,
-    showCancelButton: true,
-    confirmButtonColor: 'rgba(220, 53, 69, .8)',
-    cancelButtonColor: 'rgba(160, 160, 160)',
-    confirmButtonText: 'Eliminar',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    return result.isConfirmed;
-  });
-}
-
-export const deletePatientAlert = (patient) => {
-  Swal.fire({
-    ...template,
-    title: 'Se ha eliminado al paciente ' + patient,
     icon: 'success',
-    iconColor: 'rgba(220, 53, 69, .7)'
-  })
-}
-
-export const deletePatientError = (patient) => {
-  Swal.fire({
-    ...template,
-    title: 'Ocurrió un error en la eliminación del paciente ' + patient,
-    icon: 'error',
     iconColor: 'rgba(220, 53, 69, .7)',
+    title
   })
 }
-
-export const createVisitAlert = () => {
+export const warningAlert = (title) => {
   Swal.fire({
     ...template,
-    title: 'Visita registrada exitosamente'
-  })
-}
-
-export const createVisitError = () => {
-  Swal.fire({
-    ...template,
-    title: 'Ocurrió un error en la creación de la visita',
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
-  })
-}
-
-export const updateVisitAlert = () => {
-  Swal.fire({
-    ...template,
-    title: 'Visita modificada exitosamente'
-  })
-}
-
-export const updateVisitError = () => {
-  Swal.fire({
-    ...template,
-    title: 'Ocurrió un error en la modificación de la visita',
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
-  })
-}
-
-export const deleteVisitConfirm = async () => {
-  return Swal.fire({
-    title: `¿Desea eliminar la visita?`,
     icon: 'warning',
     iconColor: 'rgba(220, 53, 69, .7)',
-    showConfirmButton: true,
-    showCancelButton: true,
-    confirmButtonColor: 'rgba(220, 53, 69, .8)',
-    cancelButtonColor: 'rgba(160, 160, 160)',
-    confirmButtonText: 'Eliminar',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    return result.isConfirmed;
-  });
-}
-
-export const deleteVisitAlert = () => {
-  Swal.fire({
-    ...template,
-    title: 'Se ha eliminado la visita',
-    icon: 'success',
-    iconColor: 'rgba(220, 53, 69, .7)'
+    title
   })
-}
-
-export const deleteVisitError = () => {
-  Swal.fire({
-    ...template,
-    title: 'Ocurrió un error en la eliminación de la visita',
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
-  })
-}
-
-export const incompleteFields = () => {
-  Swal.fire({
-    ...template,
-    title: 'Complete los campos obligatorios',
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)'
-  })
-}
-
-export const loginUserFieldsError = () => {
-  Swal.fire({
-    ...template,
-    title: 'Correo electrónico o contraseña inválidas',
-    icon: 'warning',
-    iconColor: 'rgba(220, 53, 69, .7)',
-  })
-}
-
-export const loginUser404Error = () => {
-  Swal.fire({
-    ...template,
-    title: 'No se ha encontrado el usuario',
-    icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
-  })
-}
-
-export const logoutConfirm = async () => {
-  return Swal.fire({
-    title: `¿Desea cerrar sesión?`,
-    icon: 'warning',
-    iconColor: 'rgba(220, 53, 69, .7)',
-    showConfirmButton: true,
-    showCancelButton: true,
-    confirmButtonColor: 'rgba(220, 53, 69, .8)',
-    cancelButtonColor: 'rgba(160, 160, 160)',
-    confirmButtonText: 'Cerrar sesión',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    return result.isConfirmed;
-  });
 }
 
 export const wakingServerAlert = () => {
@@ -198,6 +56,6 @@ export const serverError = () => {
     ...template,
     title: 'Ocurrió un error inesperado, por favor intente de nuevo más tarde',
     icon: 'error',
-    iconColor: 'rgba(220, 53, 69, .7)',
+    iconColor: 'rgba(220, 53, 69, .7)'
   })
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import LoginForm from '../LoginForm/LoginForm'
-import './AuthContainer.css'
 import RegisterForm from '../RegisterForm/RegisterForm'
+import './AuthContainer.css'
 
 const AuthContainer = () => {
 
