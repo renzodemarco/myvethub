@@ -15,6 +15,7 @@ const PatientContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [wakingServer, setWakingServer] = useState(false)
+  const [wakingServerAlert, setwakingServerAlert] = useState(false);
 
   // Chequear credenciales
   useEffect(() => {
@@ -48,6 +49,7 @@ const PatientContextProvider = ({ children }) => {
     if (isLoading) {
       timer = setTimeout(() => {
         setWakingServer(true);
+        setWakingServerAlert(true)
         wakingServerAlert();
         interval = setInterval(() => {
           wakingServerAlert();
@@ -57,7 +59,9 @@ const PatientContextProvider = ({ children }) => {
       setWakingServer(false);
       clearTimeout(timer);
       clearInterval(interval); 
-      Swal.close()
+      if (wakingServerAlert) {
+        Swal.close()
+      }
     }
 
     return () => {
