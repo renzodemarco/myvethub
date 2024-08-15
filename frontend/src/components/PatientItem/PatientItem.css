@@ -71,6 +71,12 @@
     background-color: rgba(75, 21, 126, 0.761);
 }
 
-.btn-primary:not(:disabled):not(:disabled):active {
-    background-color: rgba(75, 21, 126, 0.961);
+.btn-primary:focus {
+    background-color: rgba(75, 21, 126, 1);
+    box-shadow: 0 0 0 0.25rem rgba(75, 21, 126, .5);
+}
+
+.btn-primary:not(:disabled):active {
+    background-color: rgba(75, 21, 126, 1);
+    box-shadow: 0 0 0 0.25rem rgba(75, 21, 126, .5);
 } 

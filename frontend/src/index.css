@@ -60,6 +60,16 @@ a {
   padding: 2rem;
 }
 
+.swal2-confirm:focus, 
+.swal2-confirm:active {
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, .3) !important
+}
+
+.swal2-cancel:focus, 
+.swal2-cancel:active {
+  box-shadow: 0 0 0 0.25rem rgba(160, 160, 160, .4) !important
+}
+
 @media screen and (min-width: 1500px) {
   * {
     font-size: 17px;
