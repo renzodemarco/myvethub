@@ -1,9 +1,8 @@
-import Swal from 'sweetalert2'
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getPatients, postPatient, putPatient, deletePatient } from '../services/patientsService.js'
 import getTokenInfo from '../utils/jwt.js';
 import { postRegisterUser, postLoginUser } from '../services/userService.js';
-import { wakingServerAlert } from '../utils/alerts.js';
+import { successAlert, wakingServerAlert } from '../utils/alerts.js';
 
 const PatientContext = createContext()
 
@@ -15,7 +14,6 @@ const PatientContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [wakingServer, setWakingServer] = useState(false)
-  const [showWakingServerAlert, setShowWakingServerAlert] = useState(false);
 
   // Chequear credenciales
   useEffect(() => {
@@ -31,6 +29,7 @@ const PatientContextProvider = ({ children }) => {
       try {
         const data = await getPatients(token);
         setPatients(data.payload);
+        successAlert(`¡Bienvenido/a ${auth.username}!`)
       } catch (error) {
         setError(error);
       } finally {
@@ -49,7 +48,6 @@ const PatientContextProvider = ({ children }) => {
     if (isLoading) {
       timer = setTimeout(() => {
         setWakingServer(true);
-        setShowWakingServerAlert(true)
         wakingServerAlert();
         interval = setInterval(() => {
           wakingServerAlert();
