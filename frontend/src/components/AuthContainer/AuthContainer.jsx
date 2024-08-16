@@ -7,7 +7,8 @@ const AuthContainer = () => {
 
   const [isRegistered, setIsRegistered] = useState(true)
 
-  const switchIsRegistered = () => {
+  const switchIsRegistered = (e) => {
+    e.preventDefault()
     setIsRegistered(prevState => !prevState);
   };
 

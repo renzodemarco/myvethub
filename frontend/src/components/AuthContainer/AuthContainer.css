@@ -22,3 +22,9 @@
   padding: 1.5rem 1rem 3rem;
   flex: 1;
 }
+
+@media screen and (max-width: 480px) {
+  .auth-container {
+    width: 100%;
+  }
+}
