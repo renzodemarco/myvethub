@@ -23,8 +23,9 @@ export const postRegisterUser = async (data) => {
   }
   catch (error) {
     if (error.response) {
-      throw new Error(`Error al obtener los pacientes: ${error.response.data.message}`);
+      return { error: true, ...error.response };
+    } else {
+      return serverError();
     }
-    else serverError()
   }
 };

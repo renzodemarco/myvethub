@@ -85,10 +85,16 @@ const PatientContextProvider = ({ children }) => {
 
   const registerUser = async (data) => {
     try {
+      setIsLoading(true)
       const response = await postRegisterUser(data)
-      if (response.success === true) alert("Usuario registrado exitosamente")
+      if (response.error) {
+        throw response;
+      }
+      return response
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false)
     }
   }
 

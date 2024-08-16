@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext'
-import { serverError, warningAlert } from '../../utils/alerts'
+import { errorAlert, serverError, successAlert, warningAlert } from '../../utils/alerts'
+import validateRegisterForm from '../../utils/validateRegisterForm'
 import './RegisterForm.css'
 
 const RegisterForm = ({ handleSwitch }) => {
@@ -17,16 +18,22 @@ const RegisterForm = ({ handleSwitch }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    if (password !== passwordConf) return warningAlert('Las contraseñas no coinciden')
+    const formError = validateRegisterForm({username, email, password, passwordConf})
+
+    if (formError) return warningAlert(formError)
 
     try {
       await registerUser({ username, email, password })
+      successAlert("El usuario ha sido registrado")
+      handleSwitch()
     }
     catch (error) {
+      if (error.data.message === "The email is already registered") {
+        return errorAlert("Este correo ya está registrado, intenta con otro")
+      }
       serverError()
     }
   }
-
 
   return (
     <>
