@@ -39,7 +39,7 @@ const RegisterForm = ({ handleSwitch }) => {
     <>
       <form className='auth-form'>
         <div className='register-form-container'>
-          <label className="auth-form-label" htmlFor='username'>Nombre:</label>
+          <label className="auth-form-label" htmlFor='username'>Nombre</label>
           <input
             type="text"
             className="form-control"
@@ -49,7 +49,7 @@ const RegisterForm = ({ handleSwitch }) => {
             name="username"
             autoComplete="off"
           />
-          <label className="auth-form-label" htmlFor='email'>Correo electrónico:</label>
+          <label className="auth-form-label" htmlFor='email'>Correo electrónico</label>
           <input
             type="email"
             className="form-control"
@@ -59,7 +59,7 @@ const RegisterForm = ({ handleSwitch }) => {
             name="email"
             autoComplete="off"
           />
-          <label className="auth-form-label" htmlFor='password'>Contraseña:</label>
+          <label className="auth-form-label" htmlFor='password'>Contraseña</label>
           <input
             type="password"
             className="form-control"
@@ -69,7 +69,7 @@ const RegisterForm = ({ handleSwitch }) => {
             name="password"
             autoComplete="off"
           />
-          <label className="auth-form-label" htmlFor='password-conf'>Confirme su contraseña:</label>
+          <label className="auth-form-label" htmlFor='password-conf'>Confirme su contraseña</label>
           <input
             type="password"
             className="form-control"
