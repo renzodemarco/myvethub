@@ -47,7 +47,7 @@ export const wakingServerAlert = () => {
     ...template,
     title: 'Despertando servidor, esto puede tardar unos minutos...',
     icon: 'warning',
-    timer: 8000
+    timer: 6000
   })
 }
 
