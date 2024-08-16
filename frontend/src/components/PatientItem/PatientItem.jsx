@@ -10,7 +10,7 @@ import Modal from '../Modal/Modal.jsx'
 import PatientCardContainer from '../PatientCardContainer/PatientCardContainer.jsx'
 import { useState } from 'react'
 import { usePatientContext } from '../../context/PatientContext.jsx'
-import { errorAlert } from '../../utils/alerts.js'
+import { errorAlert, deleteAlert } from '../../utils/alerts.js'
 import { deletePatientConfirm } from '../../utils/confirms.js'
 
 const PatientItem = ({ data }) => {
