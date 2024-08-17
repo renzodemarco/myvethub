@@ -46,10 +46,4 @@
   .register-form-container {
     width: 90vw
   }
-
-  .register-form-container input {
-    width: 56%;
-    margin-bottom: .6rem;
-  }
-
 }
